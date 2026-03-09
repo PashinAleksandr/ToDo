@@ -34,6 +34,12 @@
 		D41025332F5C8BE8009CEA71 /* UIViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41025322F5C8BE8009CEA71 /* UIViewInput.swift */; };
 		D41025362F5C8E57009CEA71 /* TransitionHandlerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41025352F5C8E57009CEA71 /* TransitionHandlerProtocol.swift */; };
 		D41025382F5C8F13009CEA71 /* MainModuleAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41025372F5C8F13009CEA71 /* MainModuleAssembler.swift */; };
+		D410253A2F5DD9F1009CEA71 /* TaskListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41025392F5DD9F1009CEA71 /* TaskListTableViewCell.swift */; };
+		D410253C2F5DDA19009CEA71 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D410253B2F5DDA19009CEA71 /* ViewModel.swift */; };
+		D41025402F5DE7C7009CEA71 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = D410253F2F5DE7C7009CEA71 /* Task.swift */; };
+		D41025432F5F4B50009CEA71 /* UITableView+register.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41025422F5F4B50009CEA71 /* UITableView+register.swift */; };
+		D41025452F5F4BB1009CEA71 /* UITableViewCell+identifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41025442F5F4BB1009CEA71 /* UITableViewCell+identifier.swift */; };
+		D41025472F5F4C1D009CEA71 /* UITableView+dequeue.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41025462F5F4C1D009CEA71 /* UITableView+dequeue.swift */; };
 		D9ADDA09CF5CAB806B76CF29 /* TaskListinteractorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E961D5AF9E9B70CF33A7CE8 /* TaskListinteractorInput.swift */; };
 		E881ED509ED2CD84EC1BCE2F /* DetailsViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C5144A13DE356698E96540C /* DetailsViewInput.swift */; };
 		EABC624B945C3FE0F8AF5CC1 /* TaskListFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813E61B567E1ACB0309501E9 /* TaskListFactory.swift */; };
@@ -73,6 +79,12 @@
 		D41025322F5C8BE8009CEA71 /* UIViewInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewInput.swift; sourceTree = "<group>"; };
 		D41025352F5C8E57009CEA71 /* TransitionHandlerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionHandlerProtocol.swift; sourceTree = "<group>"; };
 		D41025372F5C8F13009CEA71 /* MainModuleAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModuleAssembler.swift; sourceTree = "<group>"; };
+		D41025392F5DD9F1009CEA71 /* TaskListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListTableViewCell.swift; sourceTree = "<group>"; };
+		D410253B2F5DDA19009CEA71 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		D410253F2F5DE7C7009CEA71 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		D41025422F5F4B50009CEA71 /* UITableView+register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+register.swift"; sourceTree = "<group>"; };
+		D41025442F5F4BB1009CEA71 /* UITableViewCell+identifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+identifier.swift"; sourceTree = "<group>"; };
+		D41025462F5F4C1D009CEA71 /* UITableView+dequeue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+dequeue.swift"; sourceTree = "<group>"; };
 		D73D6481B8EAB739D9F5BAE5 /* TaskListinteractorOutput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TaskListinteractorOutput.swift; sourceTree = "<group>"; };
 		E34165C489148A0976E842EC /* DetailsPresenter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DetailsPresenter.swift; sourceTree = "<group>"; };
 		E9A09565A4C4637D18ACE8E5 /* Pods-ToDoForEM.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToDoForEM.debug.xcconfig"; path = "Target Support Files/Pods-ToDoForEM/Pods-ToDoForEM.debug.xcconfig"; sourceTree = "<group>"; };
@@ -154,6 +166,8 @@
 				5D8AAAF4131A28943CC3E0FB /* TaskListViewInput.swift */,
 				FDF5E4BC0A5B82A6281E01F9 /* TaskListViewOutput.swift */,
 				5F9B4CB13CD0DE7411D78B1D /* TaskListViewController.swift */,
+				D41025392F5DD9F1009CEA71 /* TaskListTableViewCell.swift */,
+				D410253B2F5DDA19009CEA71 /* ViewModel.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -237,6 +251,7 @@
 		D40F9C392F5C676000726F6C /* ToDoForEM */ = {
 			isa = PBXGroup;
 			children = (
+				D410253E2F5DE797009CEA71 /* BusinessLogic */,
 				D41025342F5C8E31009CEA71 /* Implementation */,
 				D4E58A772F5C831D00DA3373 /* presentation */,
 				D40F9C402F5C676000726F6C /* Main.storyboard */,
@@ -265,6 +280,33 @@
 				D41025372F5C8F13009CEA71 /* MainModuleAssembler.swift */,
 			);
 			path = Implementation;
+			sourceTree = "<group>";
+		};
+		D410253D2F5DE75D009CEA71 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				D410253F2F5DE7C7009CEA71 /* Task.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		D410253E2F5DE797009CEA71 /* BusinessLogic */ = {
+			isa = PBXGroup;
+			children = (
+				D41025412F5F4B36009CEA71 /* Extention */,
+				D410253D2F5DE75D009CEA71 /* Entity */,
+			);
+			path = BusinessLogic;
+			sourceTree = "<group>";
+		};
+		D41025412F5F4B36009CEA71 /* Extention */ = {
+			isa = PBXGroup;
+			children = (
+				D41025422F5F4B50009CEA71 /* UITableView+register.swift */,
+				D41025442F5F4BB1009CEA71 /* UITableViewCell+identifier.swift */,
+				D41025462F5F4C1D009CEA71 /* UITableView+dequeue.swift */,
+			);
+			path = Extention;
 			sourceTree = "<group>";
 		};
 		D4E58A772F5C831D00DA3373 /* presentation */ = {
@@ -404,12 +446,16 @@
 				D40F9C452F5C676000726F6C /* ToDoForEM.xcdatamodeld in Sources */,
 				D40F9C3B2F5C676000726F6C /* AppDelegate.swift in Sources */,
 				D40F9C3D2F5C676000726F6C /* SceneDelegate.swift in Sources */,
+				D410253A2F5DD9F1009CEA71 /* TaskListTableViewCell.swift in Sources */,
+				D410253C2F5DDA19009CEA71 /* ViewModel.swift in Sources */,
 				B0923B3AB7FAD4AFC5D3CF8E /* DetailsFactory.swift in Sources */,
+				D41025432F5F4B50009CEA71 /* UITableView+register.swift in Sources */,
 				E881ED509ED2CD84EC1BCE2F /* DetailsViewInput.swift in Sources */,
 				0A55E682C3C5E02FC5F8744F /* DetailsViewOutput.swift in Sources */,
 				9BEC800567592D07BCB47DD3 /* DetailsViewController.swift in Sources */,
 				5E5A090C1D89443AC04B449D /* DetailsModuleInput.swift in Sources */,
 				1E06A2EA9E03999D1E433DB4 /* DetailsPresenter.swift in Sources */,
+				D41025472F5F4C1D009CEA71 /* UITableView+dequeue.swift in Sources */,
 				D41025382F5C8F13009CEA71 /* MainModuleAssembler.swift in Sources */,
 				04E6A7AECD04D907ED10CA85 /* DetailsRouterInput.swift in Sources */,
 				03E2860DD2218C27073BE554 /* DetailsRouter.swift in Sources */,
@@ -420,7 +466,9 @@
 				D41025362F5C8E57009CEA71 /* TransitionHandlerProtocol.swift in Sources */,
 				7DE5EC66DB318AF5179EB0BE /* TaskListViewInput.swift in Sources */,
 				41D2881D19CC3C1B45F6C2F2 /* TaskListViewOutput.swift in Sources */,
+				D41025452F5F4BB1009CEA71 /* UITableViewCell+identifier.swift in Sources */,
 				4F0AC2ABF08C9109FAC67587 /* TaskListViewController.swift in Sources */,
+				D41025402F5DE7C7009CEA71 /* Task.swift in Sources */,
 				C52E5B60150E0064F26CDE75 /* TaskListModuleInput.swift in Sources */,
 				3D297EF795D698A1A552E093 /* TaskListPresenter.swift in Sources */,
 				0A7DC4B2A20490E623808C3E /* TaskListRouterInput.swift in Sources */,

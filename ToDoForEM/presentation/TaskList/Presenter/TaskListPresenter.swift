@@ -17,6 +17,16 @@ class TaskListPresenter: NSObject, TaskListModuleInput, TaskListViewOutput {
     func viewIsReady() {
         view.setupInitialState()
     }
+    
+    func loadTask() {
+        interactor.loadTask()
+    }
+    
+    func didSelectTask(_ task: TODO) {
+        router.openDetails(for: task)
+    }
+    
+    
 }
 
 extension TaskListPresenter: TaskListInteractorOutput {

@@ -10,6 +10,12 @@ import Swinject
 import Foundation
 
 class DetailsFactory: PresentationModuleFactory {
+    
+    private let task: TODO
+    
+    init(task: TODO) {
+        self.task = task
+    }
 
     func instantiateViewController() -> DetailsViewController {
         let viewController = MainModuleAssembler.resolver.resolve(DetailsViewController.self)!
@@ -37,6 +43,7 @@ class DetailsModuleAssembly: Assembly {
             let interactor = DetailsInteractor()
             presenter.interactor = interactor
             interactor.output = presenter
+            //Экран коина!!
 
             return viewController
         }.inObjectScope(.transient)

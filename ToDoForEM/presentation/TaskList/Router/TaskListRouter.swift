@@ -10,5 +10,11 @@ import Foundation
 import UIKit
 
 class TaskListRouter: TaskListRouterInput {
+    
 	weak var transitionHandler: TransitionHandlerProtocol?
+    
+    func openDetails(for task: TODO) {
+        let factory = DetailsFactory(task: task)
+        transitionHandler?.showModule(usingFactory: factory)
+    }
 }

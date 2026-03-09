@@ -16,4 +16,5 @@ protocol TaskListViewOutput {
     */
 
     func viewIsReady()
+    func didSelectTask(_ task: TODO)
 }

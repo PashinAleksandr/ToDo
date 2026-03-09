@@ -9,5 +9,5 @@
 import Foundation
 
 protocol TaskListRouterInput {
-
+    func openDetails(for task: TODO)
 }

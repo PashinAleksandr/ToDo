@@ -11,5 +11,6 @@ import Foundation
 class TaskListInteractor: TaskListInteractorInput {
 
     weak var output: TaskListInteractorOutput!
-
+    
+    func loadTask() { }
 }
