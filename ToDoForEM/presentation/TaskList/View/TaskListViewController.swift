@@ -14,7 +14,7 @@ import RxRelay
 
 class TaskListViewController: UIViewController, TaskListViewInput {
     
-    private var taskList: [TODO] = []
+    private var taskList: [Task] = []
     private var taskViewModel: [TaskListTableViewCell.ViewModel] = []
     var output: TaskListViewOutput!
     
@@ -29,12 +29,12 @@ class TaskListViewController: UIViewController, TaskListViewInput {
     private let micImage = UIImage(systemName: "mic.fill")
     private let micImageView = UIImageView()
     
-    var d: TODO = TODO(title: "ЖратьПокорми котаПокорми кота", todo: "Покорми кота Покорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми кота", completed: false, data: 1234.124, id: 1, userID: 1)
-    var a: TODO = TODO(title: "ЖратПокорми котаПокорми котаПокорми котаПокорми котаь", todo: "Покорми кота", completed: false, data: 1234.124, id: 1, userID: 1)
-    var b: TODO = TODO(title: "ЖратПокорми котаь", todo: "Покорми кота", completed: false, data: 1234.124, id: 1, userID: 1)
-    var c: TODO = TODO(title: "Жрать", todo: "ПокоПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котарми кота", completed: false, data: 1234.124, id: 1, userID: 1)
-    var e: TODO = TODO(title: "Жрать", todo: "Покорми кота", completed: false, data: 1234.124, id: 1, userID: 1)
-    var t: TODO = TODO(title: "Жрать", todo: "Покорми кота", completed: false, data: 1234.124, id: 1, userID: 1)
+    var d: Task = Task(title: "ЖратьПокорми котаПокорми кота", todo: "Покорми кота Покорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми кота", completed: false, data: 1234.124, id: 1, userID: 1)
+    var a: Task = Task(title: "ЖратПокорми котаПокорми котаПокорми котаПокорми котаь", todo: "Покорми кота", completed: false, data: 1234.124, id: 1, userID: 1)
+    var b: Task = Task(title: "ЖратПокорми котаь", todo: "Покорми кота", completed: false, data: 1234.124, id: 1, userID: 1)
+    var c: Task = Task(title: "Жрать", todo: "ПокоПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котарми кота", completed: false, data: 1234.124, id: 1, userID: 1)
+    var e: Task = Task(title: "Жрать", todo: "Покорми кота", completed: false, data: 1234.124, id: 1, userID: 1)
+    var t: Task = Task(title: "Жрать", todo: "Покорми кота", completed: false, data: 1234.124, id: 1, userID: 1)
     
     // MARK: Life cycle
     override func viewDidLoad() {
@@ -61,7 +61,7 @@ class TaskListViewController: UIViewController, TaskListViewInput {
         }
     }
     
-    func transform(tasks: [TODO]) {
+    func transform(tasks: [Task]) {
         tasks.forEach { task in
             var vc: TaskListTableViewCell.ViewModel = TaskListTableViewCell.ViewModel(task: task)
             taskViewModel.append(vc)
@@ -169,6 +169,10 @@ extension TaskListViewController: UITableViewDataSource, UITableViewDelegate {
         output.didSelectTask(task)
         tableView.deselectRow(at: indexPath, animated: true)
     }
+    
+    func editTask(index: Int) {
+        output.didSelectTask(taskList[index])
+    }
 }
 
 extension TaskListViewController {
@@ -180,7 +184,7 @@ extension TaskListViewController {
         return UIContextMenuConfiguration(identifier: indexPath as NSIndexPath, previewProvider: nil) { _ in
             
             let editAction = UIAction(title: "Редактировать", image: UIImage(systemName: "pencil")) { action in
-                self.output.didSelectTask(self.taskList[indexPath.row])
+                self.editTask(index: indexPath.row)
             }
             
             let deleteAction = UIAction(title: "Удалить", image: UIImage(systemName: "trash"), attributes: .destructive) { action in

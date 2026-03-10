@@ -10,7 +10,7 @@ import ObjectMapper
 import RxSwift
 import RxRelay
 
-final class TODO {
+final class Task {
     var dispostBag: DisposeBag = DisposeBag()
     var title: String
     var todo: String
@@ -44,8 +44,8 @@ final class TODO {
     
 }
 
-extension TODO: Equatable {
-    static func == (lhs: TODO, rhs: TODO) -> Bool {
+extension Task: Equatable {
+    static func == (lhs: Task, rhs: Task) -> Bool {
         return lhs.id == rhs.id
     }
 }

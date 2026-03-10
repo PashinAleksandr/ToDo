@@ -16,14 +16,14 @@ extension TaskListTableViewCell {
         
         var dispostBag = DisposeBag()
         
-        private let task:TODO
+        private let task:Task
         
          let title = BehaviorRelay<String>(value: "")
          let completed = BehaviorRelay<Bool>(value: false)
          let dataLabel = BehaviorRelay<String>(value: "")
          let todoLabel = BehaviorRelay<String>(value: "")
         
-        init(task:TODO) {
+        init(task:Task) {
             self.task = task
             title.accept(task.title)
             completed.accept(task.completed)

@@ -19,7 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         let screenRect = UIScreen.main.bounds
-        let VC = TaskListViewController()
+        let VC = MainModuleAssembler.resolver.resolve(TaskListViewController.self)!
         window = UIWindow(frame: screenRect)
         window?.windowScene = windowScene
         window?.rootViewController = VC

@@ -11,15 +11,15 @@ import Foundation
 
 class DetailsFactory: PresentationModuleFactory {
     
-    private let task: TODO
+    private let task: Task
     
-    init(task: TODO) {
+    init(task: Task) {
         self.task = task
     }
 
     func instantiateViewController() -> DetailsViewController {
-        let viewController = MainModuleAssembler.resolver.resolve(DetailsViewController.self)!
-        return viewController
+        let vc = MainModuleAssembler.resolver.resolve(DetailsViewController.self, argument: task)!
+        return vc
     }
     
     func instantiateTransitionHandler() -> TransitionHandlerProtocol {
@@ -29,23 +29,23 @@ class DetailsFactory: PresentationModuleFactory {
 
 class DetailsModuleAssembly: Assembly {
     func assemble(container: Container) {
-        container.register(DetailsViewController.self) { (resolver: Resolver) in
-            let viewController = DetailsViewController()
+        container.register(DetailsViewController.self) { (resolver: Resolver, task: Task) in
+            let vc = DetailsViewController()
             let router = DetailsRouter()
-            router.transitionHandler = viewController
+            router.transitionHandler = vc
 
             let presenter = DetailsPresenter()
-            presenter.view = viewController
+            presenter.view = vc
             presenter.router = router
 
-            viewController.output = presenter
+            vc.output = presenter
 
             let interactor = DetailsInteractor()
             presenter.interactor = interactor
             interactor.output = presenter
-            //Экран коина!!
+            presenter.configure(with: task)
 
-            return viewController
+            return vc
         }.inObjectScope(.transient)
     }
 }

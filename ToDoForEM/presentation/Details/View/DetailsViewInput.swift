@@ -16,4 +16,6 @@ protocol DetailsViewInput: UIViewInput {
     */
 
     func setupInitialState()
+    func configure(with task: Task)
+
 }

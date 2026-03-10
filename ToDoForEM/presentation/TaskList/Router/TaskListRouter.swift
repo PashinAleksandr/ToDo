@@ -13,8 +13,8 @@ class TaskListRouter: TaskListRouterInput {
     
 	weak var transitionHandler: TransitionHandlerProtocol?
     
-    func openDetails(for task: TODO) {
+    func openDetails(for task: Task) {
         let factory = DetailsFactory(task: task)
-        transitionHandler?.showModule(usingFactory: factory)
+        transitionHandler?.presentModule(usingFactory: factory)
     }
 }

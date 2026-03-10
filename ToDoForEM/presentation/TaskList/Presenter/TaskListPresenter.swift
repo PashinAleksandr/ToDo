@@ -22,7 +22,7 @@ class TaskListPresenter: NSObject, TaskListModuleInput, TaskListViewOutput {
         interactor.loadTask()
     }
     
-    func didSelectTask(_ task: TODO) {
+    func didSelectTask(_ task: Task) {
         router.openDetails(for: task)
     }
     

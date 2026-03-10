@@ -25,6 +25,7 @@ class TaskListModuleAssembly: Assembly {
     func assemble(container: Container) {
         container.register(TaskListViewController.self) { (resolver: Resolver) in
             let viewController = TaskListViewController()
+            
             let router = TaskListRouter()
             router.transitionHandler = viewController
 
@@ -35,8 +36,10 @@ class TaskListModuleAssembly: Assembly {
             viewController.output = presenter
 
             let interactor = TaskListInteractor()
-            presenter.interactor = interactor
             interactor.output = presenter
+            
+            presenter.interactor = interactor
+            viewController.output = presenter
 
             return viewController
         }.inObjectScope(.transient)

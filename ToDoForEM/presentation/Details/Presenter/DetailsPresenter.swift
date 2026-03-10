@@ -9,17 +9,25 @@
 import Foundation
 
 class DetailsPresenter: NSObject, DetailsModuleInput, DetailsViewOutput {
-    func setupInitialState() {
-        
-    }
     
-
     weak var view: DetailsViewInput!
     var interactor: DetailsInteractorInput!
     var router: DetailsRouterInput!
-
+    var task: Task?
     func viewIsReady() {
         view.setupInitialState()
+    }
+    
+    func openTaskListVC() {
+        router.openTaskListVC()
+    }
+    
+    func configure(with task: Task) {
+        self.task = task
+    }
+    
+    func setupInitialState() {
+        
     }
 }
 

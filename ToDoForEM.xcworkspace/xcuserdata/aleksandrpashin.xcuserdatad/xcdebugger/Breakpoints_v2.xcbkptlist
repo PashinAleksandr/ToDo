@@ -7,64 +7,129 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "1B25BAF1-ADC9-4A5E-8014-CC62E417B9B0"
+            uuid = "C8EB3763-9377-485F-8451-42DBA0A6B49B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ToDoForEM/presentation/TaskList/View/TaskListViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "191"
+            endingLineNumber = "191"
+            landmarkName = "tableView(_:contextMenuConfigurationForRowAt:point:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6928C8CB-B37A-4A09-A892-A54A29E49F5A"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ToDoForEM/presentation/TaskList/View/TaskListViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "174"
+            endingLineNumber = "174"
+            landmarkName = "editTask(index:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F476DDE6-C3AE-425B-BA4B-507353BE4340"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ToDoForEM/presentation/Details/View/DetailsViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
+            landmarkName = "openTaskListVC()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "F476DDE6-C3AE-425B-BA4B-507353BE4340 - 791c9df910c8bd1b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ToDoForEM.DetailsViewController.openTaskListVC() -&gt; ()"
+                  moduleName = "ToDoForEM"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aleksandrpashin/Desktop/Swift/ToDoForEM/ToDoForEM/presentation/Details/View/DetailsViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "89"
+                  endingLineNumber = "89"
+                  offsetFromSymbolStart = "30">
+               </Location>
+               <Location
+                  uuid = "F476DDE6-C3AE-425B-BA4B-507353BE4340 - 791c9df910c8bcd9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ToDoForEM.DetailsViewController.openTaskListVC() -&gt; ()"
+                  moduleName = "ToDoForEM"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aleksandrpashin/Desktop/Swift/ToDoForEM/ToDoForEM/presentation/Details/View/DetailsViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "87"
+                  endingLineNumber = "87"
+                  offsetFromSymbolStart = "30">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "11E9CE80-A958-4871-B08B-076AF970D36A"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ToDoForEM/presentation/Details/View/DetailsViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
+            landmarkName = "setupUI()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3A64DB3B-8FBE-44BF-B42F-8F6BF34ED3F6"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ToDoForEM/presentation/Details/Presenter/DetailsPresenter.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "11"
-            endingLineNumber = "11"
-            landmarkName = "DetailsPresenter"
-            landmarkType = "3">
-            <Locations>
-               <Location
-                  uuid = "1B25BAF1-ADC9-4A5E-8014-CC62E417B9B0 - a629e7947089db68"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "ToDoForEM.DetailsPresenter.__allocating_init() -&gt; ToDoForEM.DetailsPresenter"
-                  moduleName = "ToDoForEM"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/aleksandrpashin/Desktop/Swift/ToDoForEM/ToDoForEM/presentation/Details/Presenter/DetailsPresenter.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "0"
-                  endingLineNumber = "0"
-                  offsetFromSymbolStart = "7">
-               </Location>
-               <Location
-                  uuid = "1B25BAF1-ADC9-4A5E-8014-CC62E417B9B0 - 6b6ea3669aee4697"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "ToDoForEM.DetailsPresenter.init() -&gt; ToDoForEM.DetailsPresenter"
-                  moduleName = "ToDoForEM"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/aleksandrpashin/Desktop/Swift/ToDoForEM/ToDoForEM/presentation/Details/Presenter/DetailsPresenter.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "17"
-                  endingLineNumber = "17"
-                  offsetFromSymbolStart = "58">
-               </Location>
-               <Location
-                  uuid = "1B25BAF1-ADC9-4A5E-8014-CC62E417B9B0 - 929369a32934d9c9"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "ToDoForEM.DetailsPresenter.__deallocating_deinit"
-                  moduleName = "ToDoForEM"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/aleksandrpashin/Desktop/Swift/ToDoForEM/ToDoForEM/presentation/Details/Presenter/DetailsPresenter.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "0"
-                  endingLineNumber = "0"
-                  offsetFromSymbolStart = "16">
-               </Location>
-            </Locations>
+            startingLineNumber = "22"
+            endingLineNumber = "22"
+            landmarkName = "openTaskListVC()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4B4119D5-9370-4CB6-A984-FE2B4AE83552"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ToDoForEM/presentation/Details/Router/DetailsRouter.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "15"
+            endingLineNumber = "15"
+            landmarkName = "openTaskListVC()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
