@@ -37,8 +37,21 @@ extension MainModuleAssembler {
     
     private static func initServiceModules() -> [Assembly] {
         return [
-        
+            ServiceAssembly()
         ]
     }
     
+}
+
+
+final class ServiceAssembly: Assembly {
+    
+    func assemble(container: Container) {
+        
+        container.register(TaskServiceProtocol.self) { _ in
+            TaskService()
+        }
+        .inObjectScope(.container)
+        
+    }
 }

@@ -38,10 +38,15 @@ class TaskListModuleAssembly: Assembly {
             let interactor = TaskListInteractor()
             interactor.output = presenter
             
+            interactor.taskService = resolver.resolve(TaskServiceProtocol.self)
+
             presenter.interactor = interactor
             viewController.output = presenter
 
             return viewController
         }.inObjectScope(.transient)
+        container.register(TaskServiceProtocol.self) { _ in
+            TaskService()
+        }.inObjectScope(.container)
     }
 }

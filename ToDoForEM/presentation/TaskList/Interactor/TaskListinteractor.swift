@@ -11,6 +11,18 @@ import Foundation
 class TaskListInteractor: TaskListInteractorInput {
 
     weak var output: TaskListInteractorOutput!
+    var taskService: TaskServiceProtocol!
     
-    func loadTask() { }
+    func loadTask() { 
+        taskService.fetchTasks { [weak self] tasks, error in
+            guard let self = self else { return }
+            if let tasks = tasks {
+                self.output.didUpdateTasks(tasks)
+            }
+            
+            if let error = error {
+                output.showError(error: error)
+            }
+        }
+    }
 }

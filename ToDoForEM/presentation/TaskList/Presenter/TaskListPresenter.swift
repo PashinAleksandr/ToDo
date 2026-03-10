@@ -30,4 +30,12 @@ class TaskListPresenter: NSObject, TaskListModuleInput, TaskListViewOutput {
 }
 
 extension TaskListPresenter: TaskListInteractorOutput {
+    func showError(error: Error) {
+        view.show(error)
+    }
+    
+    func didUpdateTasks(_ tasks: [Task]) {
+        view.showTasks(tasks)
+    }
+    
 }

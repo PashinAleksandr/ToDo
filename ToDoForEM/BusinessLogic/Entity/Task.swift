@@ -10,14 +10,15 @@ import ObjectMapper
 import RxSwift
 import RxRelay
 
-final class Task {
+final class Task: Mappable {
+    
     var dispostBag: DisposeBag = DisposeBag()
-    var title: String
-    var todo: String
-    var completed: Bool
-    var data: Double
-    var id: Int
-    var userID: Int
+    var title: String = ""
+    var todo: String = ""
+    var completed: Bool = false
+    var data: Double = 0
+    var id: Int = 0
+    var userID: Int = 0
     
 //    required init?(map: Map) {}
     
@@ -36,11 +37,26 @@ final class Task {
         self.userID = userID
     }
     
-    
-    
-    func mapping(map: ObjectMapper.Map) {
-        
-    }
+    required init?(map: Map) {}
+
+       func mapping(map: Map) {
+
+           let stringToInt = TransformOf<Int, Any>(
+               fromJSON: { value in
+                   if let v = value as? Int { return v }
+                   return nil
+               },
+               toJSON: { $0 }
+           )
+
+           todo      <- map["todo"]
+           completed <- map["completed"]
+           id        <- (map["id"], stringToInt)
+           userID    <- (map["userId"], stringToInt)
+
+           title = todo
+           data = Date().timeIntervalSince1970
+       }
     
 }
 

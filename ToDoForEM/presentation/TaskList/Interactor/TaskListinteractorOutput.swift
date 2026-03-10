@@ -9,5 +9,6 @@
 import Foundation
 
 protocol TaskListInteractorOutput: AnyObject {
-
+    func didUpdateTasks(_ tasks: [Task])
+    func showError(error: Error)
 }

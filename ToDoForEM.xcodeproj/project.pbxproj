@@ -42,6 +42,8 @@
 		D41025472F5F4C1D009CEA71 /* UITableView+dequeue.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41025462F5F4C1D009CEA71 /* UITableView+dequeue.swift */; };
 		D417E9812F609DAF00459E94 /* TaskService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D417E9802F609DAF00459E94 /* TaskService.swift */; };
 		D417E9832F609DDA00459E94 /* SaveService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D417E9822F609DDA00459E94 /* SaveService.swift */; };
+		D417E9852F60A3E000459E94 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = D417E9842F60A3E000459E94 /* Config.swift */; };
+		D417E9872F60B14C00459E94 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D417E9862F60B14C00459E94 /* Errors.swift */; };
 		D9ADDA09CF5CAB806B76CF29 /* TaskListinteractorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E961D5AF9E9B70CF33A7CE8 /* TaskListinteractorInput.swift */; };
 		E881ED509ED2CD84EC1BCE2F /* DetailsViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C5144A13DE356698E96540C /* DetailsViewInput.swift */; };
 		EABC624B945C3FE0F8AF5CC1 /* TaskListFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813E61B567E1ACB0309501E9 /* TaskListFactory.swift */; };
@@ -89,6 +91,8 @@
 		D41025462F5F4C1D009CEA71 /* UITableView+dequeue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+dequeue.swift"; sourceTree = "<group>"; };
 		D417E9802F609DAF00459E94 /* TaskService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskService.swift; sourceTree = "<group>"; };
 		D417E9822F609DDA00459E94 /* SaveService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveService.swift; sourceTree = "<group>"; };
+		D417E9842F60A3E000459E94 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		D417E9862F60B14C00459E94 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		D73D6481B8EAB739D9F5BAE5 /* TaskListinteractorOutput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TaskListinteractorOutput.swift; sourceTree = "<group>"; };
 		E34165C489148A0976E842EC /* DetailsPresenter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DetailsPresenter.swift; sourceTree = "<group>"; };
 		E9A09565A4C4637D18ACE8E5 /* Pods-ToDoForEM.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToDoForEM.debug.xcconfig"; path = "Target Support Files/Pods-ToDoForEM/Pods-ToDoForEM.debug.xcconfig"; sourceTree = "<group>"; };
@@ -290,6 +294,7 @@
 			isa = PBXGroup;
 			children = (
 				D410253F2F5DE7C7009CEA71 /* Task.swift */,
+				D417E9862F60B14C00459E94 /* Errors.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -318,6 +323,7 @@
 			isa = PBXGroup;
 			children = (
 				D417E9802F609DAF00459E94 /* TaskService.swift */,
+				D417E9842F60A3E000459E94 /* Config.swift */,
 				D417E9822F609DDA00459E94 /* SaveService.swift */,
 			);
 			path = Services;
@@ -483,12 +489,14 @@
 				7DE5EC66DB318AF5179EB0BE /* TaskListViewInput.swift in Sources */,
 				41D2881D19CC3C1B45F6C2F2 /* TaskListViewOutput.swift in Sources */,
 				D41025452F5F4BB1009CEA71 /* UITableViewCell+identifier.swift in Sources */,
+				D417E9872F60B14C00459E94 /* Errors.swift in Sources */,
 				4F0AC2ABF08C9109FAC67587 /* TaskListViewController.swift in Sources */,
 				D41025402F5DE7C7009CEA71 /* Task.swift in Sources */,
 				C52E5B60150E0064F26CDE75 /* TaskListModuleInput.swift in Sources */,
 				3D297EF795D698A1A552E093 /* TaskListPresenter.swift in Sources */,
 				0A7DC4B2A20490E623808C3E /* TaskListRouterInput.swift in Sources */,
 				1CAA254A3BF17B1EC79DD6B7 /* TaskListRouter.swift in Sources */,
+				D417E9852F60A3E000459E94 /* Config.swift in Sources */,
 				D9ADDA09CF5CAB806B76CF29 /* TaskListinteractorInput.swift in Sources */,
 				D41025332F5C8BE8009CEA71 /* UIViewInput.swift in Sources */,
 				2E113BAAA063E6E6361B838F /* TaskListinteractorOutput.swift in Sources */,

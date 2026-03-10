@@ -29,18 +29,18 @@ class TaskListViewController: UIViewController, TaskListViewInput {
     private let micImage = UIImage(systemName: "mic.fill")
     private let micImageView = UIImageView()
     
-    var d: Task = Task(title: "ЖратьПокорми котаПокорми кота", todo: "Покорми кота Покорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми кота", completed: false, data: 1234.124, id: 1, userID: 1)
-    var a: Task = Task(title: "ЖратПокорми котаПокорми котаПокорми котаПокорми котаь", todo: "Покорми кота", completed: false, data: 1234.124, id: 1, userID: 1)
-    var b: Task = Task(title: "ЖратПокорми котаь", todo: "Покорми кота", completed: false, data: 1234.124, id: 1, userID: 1)
-    var c: Task = Task(title: "Жрать", todo: "ПокоПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котарми кота", completed: false, data: 1234.124, id: 1, userID: 1)
-    var e: Task = Task(title: "Жрать", todo: "Покорми кота", completed: false, data: 1234.124, id: 1, userID: 1)
-    var t: Task = Task(title: "Жрать", todo: "Покорми кота", completed: false, data: 1234.124, id: 1, userID: 1)
-    
+//    var d: Task = Task(title: "ЖратьПокорми котаПокорми кота", todo: "Покорми кота Покорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми кота", completed: false, data: 1234.124, id: 1, userID: 1)
+//    var a: Task = Task(title: "ЖратПокорми котаПокорми котаПокорми котаПокорми котаь", todo: "Покорми кота", completed: false, data: 1234.124, id: 1, userID: 1)
+//    var b: Task = Task(title: "ЖратПокорми котаь", todo: "Покорми кота", completed: false, data: 1234.124, id: 1, userID: 1)
+//    var c: Task = Task(title: "Жрать", todo: "ПокоПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котарми кота", completed: false, data: 1234.124, id: 1, userID: 1)
+//    var e: Task = Task(title: "Жрать", todo: "Покорми кота", completed: false, data: 1234.124, id: 1, userID: 1)
+//    var t: Task = Task(title: "Жрать", todo: "Покорми кота", completed: false, data: 1234.124, id: 1, userID: 1)
+//    
     // MARK: Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        taskList = [a,b,c,d,e,t]
-        transform(tasks: taskList)
+       // taskList = [a,b,c,d,e,t]
+      //  transform(tasks: taskList)
         setupInitialState()
     }
     
@@ -51,6 +51,7 @@ class TaskListViewController: UIViewController, TaskListViewInput {
         setupActivityIndicator()
         activityIndicator.startAnimating()
         setuUI()
+        output.loadTask()
     }
     
     private func setupActivityIndicator() {
@@ -61,10 +62,25 @@ class TaskListViewController: UIViewController, TaskListViewInput {
         }
     }
     
+    func showTasks(_ tasks: [Task]) {
+
+        var map = Dictionary(uniqueKeysWithValues: taskList.map { ($0.id, $0) })
+
+        for task in tasks {
+            map[task.id] = task
+        }
+
+        taskList = Array(map.values)
+
+        transform(tasks: taskList)
+
+        stopActivityIndicator()
+        tableView.reloadData()
+    }
+    
     func transform(tasks: [Task]) {
-        tasks.forEach { task in
-            var vc: TaskListTableViewCell.ViewModel = TaskListTableViewCell.ViewModel(task: task)
-            taskViewModel.append(vc)
+        taskViewModel = tasks.map {
+            TaskListTableViewCell.ViewModel(task: $0)
         }
     }
     
