@@ -14,7 +14,7 @@ import SnapKit
 extension TaskListTableViewCell {
     class ViewModel {
         
-        var dispostBag = DisposeBag()
+        var disposeBag = DisposeBag()
         
         private let task:Task
         
@@ -23,17 +23,32 @@ extension TaskListTableViewCell {
         let dataLabel = BehaviorRelay<String>(value: "")
         let todoLabel = BehaviorRelay<String>(value: "")
         
-        init(task:Task) {
+        init(task: Task) {
             self.task = task
+            
             title.accept(task.title)
-            completed.accept(task.completed)
             todoLabel.accept(task.todo)
+            completed.accept(task.completed)
             
             let date = Date(timeIntervalSince1970: task.data)
             let formatter = DateFormatter()
             formatter.dateFormat = "dd/MM/yyyy"
             formatter.locale = Locale(identifier: "en_US_POSIX")
             dataLabel.accept(formatter.string(from: date))
+            
+            completed
+                .subscribe(onNext: { [weak self] isCompleted in
+                    guard let self = self else { return }
+                    self.task.completed = isCompleted
+                })
+                .disposed(by: disposeBag)
+        }
+        
+        // MARK: - Toggle completed status
+        func toggleCompleted() {
+            let newStatus = !completed.value
+            completed.accept(newStatus)
         }
     }
 }
+

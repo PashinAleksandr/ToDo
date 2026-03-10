@@ -14,7 +14,7 @@ class TaskListTableViewCell: UITableViewCell {
     private let completed = UIButton()
     private let dataLabel = UILabel()
     private let todoLabel = UILabel()
-    
+    private var viewModel: ViewModel?
     var disposeBag = DisposeBag()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -27,6 +27,7 @@ class TaskListTableViewCell: UITableViewCell {
     private func setupUI() {
         title.font = .systemFont(ofSize: 16, weight: .medium)
         title.numberOfLines = 1
+        
         todoLabel.font = .systemFont(ofSize: 14, weight: .regular)
         //TODO: НЕ переноситься на новую строку. Надо отображать2 а видно только 1(Посмотреть есть ли правая граница)
         title.numberOfLines = 2
@@ -35,6 +36,11 @@ class TaskListTableViewCell: UITableViewCell {
         dataLabel.textColor = .systemGray
         todoLabel.setContentCompressionResistancePriority(.required, for: .vertical)
         todoLabel.lineBreakMode = .byTruncatingTail
+        
+        completed.layer.cornerRadius = 10
+        completed.layer.borderWidth = 2
+        completed.layer.borderColor = UIColor.systemYellow.cgColor
+        completed.backgroundColor = .clear
     }
     
     private func setupLayout() {
@@ -70,10 +76,49 @@ class TaskListTableViewCell: UITableViewCell {
     }
     
     func configure(with viewModel: ViewModel) {
+        self.viewModel = viewModel
+        disposeBag = DisposeBag()
+        
         viewModel.title.bind(to: title.rx.text).disposed(by: disposeBag)
-        viewModel.completed.bind(to: completed.rx.isEnabled).disposed(by: disposeBag)
-        viewModel.dataLabel.bind(to: dataLabel.rx.text).disposed(by: disposeBag)
         viewModel.todoLabel.bind(to: todoLabel.rx.text).disposed(by: disposeBag)
+        viewModel.dataLabel.bind(to: dataLabel.rx.text).disposed(by: disposeBag)
+        
+        viewModel.completed
+            .subscribe(onNext: { [weak self] isCompleted in
+                self?.updateCompletedUI(isCompleted: isCompleted)
+            })
+            .disposed(by: disposeBag)
+        
+        completed.rx.tap
+            .subscribe(onNext: { [weak self] in
+                self?.viewModel?.toggleCompleted()
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func updateCompletedUI(isCompleted: Bool) {
+        if isCompleted {
+            completed.setTitle("✓", for: .normal)
+            completed.backgroundColor = .systemYellow
+            title.textColor = .systemGray
+            todoLabel.textColor = .systemGray
+            let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: title.text ?? "")
+            attributeString.addAttribute(.strikethroughStyle,
+                                         value: NSUnderlineStyle.single.rawValue,
+                                         range: NSMakeRange(0, attributeString.length))
+            title.attributedText = attributeString
+        } else {
+            completed.setTitle("", for: .normal)
+            completed.backgroundColor = .clear
+            title.textColor = .label
+            todoLabel.textColor = .label
+            title.attributedText = NSAttributedString(string: viewModel?.title.value ?? "")
+        }
+        
+        completed.layer.cornerRadius = 10
+        completed.layer.borderWidth = 2
+        completed.layer.borderColor = UIColor.systemYellow.cgColor
+        completed.clipsToBounds = true
         
     }
     
