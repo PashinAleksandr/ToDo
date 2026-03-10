@@ -67,6 +67,12 @@ class TaskListViewController: UIViewController, TaskListViewInput {
             taskViewModel.append(vc)
         }
     }
+    //TODO: До тестировать возможно не работает
+    func deleteTask(taskRow: Int) {
+        taskList.remove(at: taskRow)
+        transform(tasks: taskList)
+        tableView.reloadData()
+    }
     
     func stopActivityIndicator() {
         activityIndicator.stopAnimating()
@@ -161,5 +167,30 @@ extension TaskListViewController: UITableViewDataSource, UITableViewDelegate {
         let task = taskList[indexPath.row]
         output.didSelectTask(task)
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+}
+
+extension TaskListViewController {
+    
+    func tableView(_ tableView: UITableView,
+                   contextMenuConfigurationForRowAt indexPath: IndexPath,
+                   point: CGPoint) -> UIContextMenuConfiguration? {
+        
+        return UIContextMenuConfiguration(identifier: indexPath as NSIndexPath, previewProvider: nil) { _ in
+            
+            let editAction = UIAction(title: "Редактировать", image: UIImage(systemName: "pencil")) { action in
+                self.output.didSelectTask(self.taskList[indexPath.row])
+            }
+            
+            let deleteAction = UIAction(title: "Удалить", image: UIImage(systemName: "trash"), attributes: .destructive) { action in
+                self.deleteTask(taskRow: indexPath.row)
+            }
+            
+            let shareAction = UIAction(title: "Поделиться", image: UIImage(systemName: "square.and.arrow.up")) { action in
+                
+            }
+            
+            return UIMenu(title: "", children: [editAction, shareAction, deleteAction])
+        }
     }
 }
