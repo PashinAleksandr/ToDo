@@ -140,13 +140,23 @@ class TaskListViewController: UIViewController, TaskListViewInput {
         taskCounterLabel.font = .systemFont(ofSize: 16, weight: .medium)
         taskCounterLabel.textColor = .systemGray6
         taskCounterLabel.text = "\(taskViewModel.count) Задач"
-        
+        creatTaskButton.addTarget(self, action: #selector(creatNewTask), for: .touchUpInside)
         creatTaskButton.setImage(UIImage(systemName: "square.and.pencil"), for: .normal)
         creatTaskButton.tintColor = .systemYellow
         creatTaskButton.configuration = .plain()
         creatTaskButton.configuration?.preferredSymbolConfigurationForImage =
         UIImage.SymbolConfiguration(pointSize: 22, weight: .medium)
         
+    }
+    
+    @objc func creatNewTask() {
+        let calendar = Calendar.current
+        let today = calendar.startOfDay(for: Date())
+        let timestamp = today.timeIntervalSince1970
+
+        
+        let newTask: Task = Task(title: "", todo: "", completed: false, data: timestamp, id: taskList.count+1 , userID: 99)
+        output.didSelectTask(newTask)
     }
 }
 

@@ -35,9 +35,18 @@ class DetailsViewController: UIViewController, DetailsViewInput {
         }
     }
     
-    func configure(with task: Task) {
+    func saveTask() {
+        
+    }
+    
+    func configure(with task: Task) {let formatter = DateFormatter()
+        let date = Date(timeIntervalSince1970: task.data)
+        let Dformatter = DateFormatter()
+        formatter.dateFormat = "dd/MM/yyyy"
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+
+        dataLabel.text = formatter.string(from: date)
         taskTitleTextField.text = task.title
-        dataLabel.text = task.data.description
         todoTextView.text = task.todo
     }
     
@@ -77,9 +86,6 @@ class DetailsViewController: UIViewController, DetailsViewInput {
         
         dataLabel.textColor = .systemGray
         dataLabel.font = .systemFont(ofSize: 12, weight: .thin)
-        
-        
-        
         
     }
     

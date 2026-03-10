@@ -74,6 +74,7 @@ class TaskListTableViewCell: UITableViewCell {
         viewModel.completed.bind(to: completed.rx.isEnabled).disposed(by: disposeBag)
         viewModel.dataLabel.bind(to: dataLabel.rx.text).disposed(by: disposeBag)
         viewModel.todoLabel.bind(to: todoLabel.rx.text).disposed(by: disposeBag)
+        
     }
     
     required init?(coder: NSCoder) {
