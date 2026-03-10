@@ -67,11 +67,12 @@ class TaskListViewController: UIViewController, TaskListViewInput {
             taskViewModel.append(vc)
         }
     }
-    //TODO: До тестировать возможно не работает
+    
     func deleteTask(taskRow: Int) {
         taskList.remove(at: taskRow)
-        transform(tasks: taskList)
+        taskViewModel.remove(at: taskRow)
         tableView.reloadData()
+        taskCounterLabel.text = "\(taskViewModel.count) Задач"
     }
     
     func stopActivityIndicator() {
