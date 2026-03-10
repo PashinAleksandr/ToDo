@@ -26,11 +26,13 @@ class TaskListViewController: UIViewController, TaskListViewInput {
     private let viewContayner = UIView()
     private let taskCounterLabel = UILabel()
     private let creatTaskButton = UIButton()
+    private let micImage = UIImage(systemName: "mic.fill")
+    private let micImageView = UIImageView()
     
-    var d: TODO = TODO(title: "Жрать", todo: "Покорми кота", completed: false, data: 1234.124, id: 1, userID: 1)
-    var a: TODO = TODO(title: "Жрать", todo: "Покорми кота", completed: false, data: 1234.124, id: 1, userID: 1)
-    var b: TODO = TODO(title: "Жрать", todo: "Покорми кота", completed: false, data: 1234.124, id: 1, userID: 1)
-    var c: TODO = TODO(title: "Жрать", todo: "Покорми кота", completed: false, data: 1234.124, id: 1, userID: 1)
+    var d: TODO = TODO(title: "ЖратьПокорми котаПокорми кота", todo: "Покорми кота Покорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми кота", completed: false, data: 1234.124, id: 1, userID: 1)
+    var a: TODO = TODO(title: "ЖратПокорми котаПокорми котаПокорми котаПокорми котаь", todo: "Покорми кота", completed: false, data: 1234.124, id: 1, userID: 1)
+    var b: TODO = TODO(title: "ЖратПокорми котаь", todo: "Покорми кота", completed: false, data: 1234.124, id: 1, userID: 1)
+    var c: TODO = TODO(title: "Жрать", todo: "ПокоПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котарми кота", completed: false, data: 1234.124, id: 1, userID: 1)
     var e: TODO = TODO(title: "Жрать", todo: "Покорми кота", completed: false, data: 1234.124, id: 1, userID: 1)
     var t: TODO = TODO(title: "Жрать", todo: "Покорми кота", completed: false, data: 1234.124, id: 1, userID: 1)
     
@@ -41,11 +43,11 @@ class TaskListViewController: UIViewController, TaskListViewInput {
         transform(tasks: taskList)
         setupInitialState()
     }
-
-
+    
+    
     // MARK: TaskListViewInput
     func setupInitialState() {
-        output.viewIsReady()
+        //  output.viewIsReady()
         setupActivityIndicator()
         activityIndicator.startAnimating()
         setuUI()
@@ -74,15 +76,69 @@ class TaskListViewController: UIViewController, TaskListViewInput {
     func setuUI() {
         title = "Задачи"
         view.backgroundColor = .systemBackground
+        view.addSubview(taskLabel)
+        taskLabel.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide).offset(16)
+            make.left.right.equalToSuperview().inset(16)
+        }
+        taskLabel.text = "Задачи"
+        taskLabel.font = .systemFont(ofSize: 30, weight: .bold)
+        view.addSubview(searchBar)
+        searchBar.snp.makeConstraints { make in
+            make.top.equalTo(taskLabel.snp.bottom).offset(16)
+            make.left.right.equalToSuperview().inset(16)
+        }
+        taskLabel.textAlignment = .left
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(TaskListTableViewCell.self)
         view.addSubview(tableView)
         tableView.snp.makeConstraints { make in
-            make.edges.equalTo(view.safeAreaLayoutGuide)
+            make.left.right.bottom.equalTo(view.safeAreaLayoutGuide)
+            make.top.equalTo(searchBar.snp.bottom).offset(16)        }
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 80
+        searchBar.placeholder = "Search"
+        searchBar.addSubview(micImageView)
+        micImageView.image = micImage
+        micImageView.tintColor = .systemGray
+        micImageView.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
+        micImageView.snp.makeConstraints { make in
+            make.trailing.equalToSuperview().inset(16)
+            make.centerY.equalTo(searchBar)
         }
-        view.addSubview(searchBar)
-       
+        searchBar.searchTextField.rightView = micImageView
+        searchBar.searchTextField.rightViewMode = .always
+        
+        view.addSubview(viewContayner)
+        
+        viewContayner.snp.makeConstraints { make in
+            make.left.right.equalTo(view.safeAreaLayoutGuide)
+            make.bottom.equalToSuperview()
+            make.height.equalTo(view.snp.height).multipliedBy(0.1)
+        }
+        
+        viewContayner.addSubview(taskCounterLabel)
+        viewContayner.backgroundColor = .systemGray
+        taskCounterLabel.snp.makeConstraints { make in
+            make.centerX.centerY.equalToSuperview()
+        }
+        viewContayner.addSubview(creatTaskButton)
+        creatTaskButton.snp.makeConstraints { make in
+            make.trailing.equalToSuperview().inset(16)
+            make.centerY.equalTo(taskCounterLabel)
+            make.width.height.equalTo(36)
+        }
+        
+        taskCounterLabel.font = .systemFont(ofSize: 16, weight: .medium)
+        taskCounterLabel.textColor = .systemGray6
+        taskCounterLabel.text = "\(taskViewModel.count) Задач"
+        
+        creatTaskButton.setImage(UIImage(systemName: "square.and.pencil"), for: .normal)
+        creatTaskButton.tintColor = .systemYellow
+        creatTaskButton.configuration = .plain()
+        creatTaskButton.configuration?.preferredSymbolConfigurationForImage =
+        UIImage.SymbolConfiguration(pointSize: 22, weight: .medium)
         
     }
 }

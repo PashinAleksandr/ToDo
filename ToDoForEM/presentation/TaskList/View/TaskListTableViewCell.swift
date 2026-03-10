@@ -25,9 +25,16 @@ class TaskListTableViewCell: UITableViewCell {
     }
     
     private func setupUI() {
-        title.font = .systemFont(ofSize: 16, weight: .bold)
+        title.font = .systemFont(ofSize: 16, weight: .medium)
+        title.numberOfLines = 1
         todoLabel.font = .systemFont(ofSize: 14, weight: .regular)
-        dataLabel.font = .systemFont(ofSize: 12, weight: .regular)
+        //TODO: НЕ переноситься на новую строку. Надо отображать2 а видно только 1(Посмотреть есть ли правая граница)
+        title.numberOfLines = 2
+        todoLabel.lineBreakMode = .byWordWrapping
+        dataLabel.font = .systemFont(ofSize: 10, weight: .regular)
+        dataLabel.textColor = .systemGray
+        todoLabel.setContentCompressionResistancePriority(.required, for: .vertical)
+        todoLabel.lineBreakMode = .byTruncatingTail
     }
     
     private func setupLayout() {
@@ -38,23 +45,28 @@ class TaskListTableViewCell: UITableViewCell {
         
         completed.snp.makeConstraints { make in
             make.leading.top.equalToSuperview().offset(16)
-            make.height.equalTo(20)
+            make.width.height.equalTo(20)
         }
         
         title.snp.makeConstraints{ make in
-            make.top.trailing.equalToSuperview().offset(16)
+            make.top.equalToSuperview().offset(16)
             make.leading.equalTo(completed.snp.trailing).offset(12)
         }
         
         todoLabel.snp.makeConstraints{ make in
-            make.leading.equalTo(completed.snp.trailing).offset(12)
-            make.top.trailing.equalTo(title).offset(16)
+            make.top.equalTo(title.snp.bottom).offset(8)
+            make.leading.equalTo(title)
+            make.trailing.equalToSuperview().inset(16)
+            
         }
+        
         dataLabel.snp.makeConstraints { make in
-            make.top.equalTo(todoLabel).offset(12)
-            make.leading.equalTo(completed.snp.trailing).offset(12)
-            make.bottom.equalToSuperview().offset(16)
+            make.top.equalTo(todoLabel.snp.bottom).offset(8)
+            make.leading.equalTo(title)
+            make.trailing.equalToSuperview().inset(16)
+            make.bottom.equalToSuperview().inset(16)
         }
+        
     }
     
     func configure(with viewModel: ViewModel) {
