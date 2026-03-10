@@ -12,4 +12,5 @@ target 'ToDoForEM' do
   pod 'SnapKit'
   pod 'Swinject'
   pod 'RxDataSources'
+  pod 'Alamofire'
 end

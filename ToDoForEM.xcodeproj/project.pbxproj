@@ -40,6 +40,8 @@
 		D41025432F5F4B50009CEA71 /* UITableView+register.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41025422F5F4B50009CEA71 /* UITableView+register.swift */; };
 		D41025452F5F4BB1009CEA71 /* UITableViewCell+identifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41025442F5F4BB1009CEA71 /* UITableViewCell+identifier.swift */; };
 		D41025472F5F4C1D009CEA71 /* UITableView+dequeue.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41025462F5F4C1D009CEA71 /* UITableView+dequeue.swift */; };
+		D417E9812F609DAF00459E94 /* TaskService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D417E9802F609DAF00459E94 /* TaskService.swift */; };
+		D417E9832F609DDA00459E94 /* SaveService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D417E9822F609DDA00459E94 /* SaveService.swift */; };
 		D9ADDA09CF5CAB806B76CF29 /* TaskListinteractorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E961D5AF9E9B70CF33A7CE8 /* TaskListinteractorInput.swift */; };
 		E881ED509ED2CD84EC1BCE2F /* DetailsViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C5144A13DE356698E96540C /* DetailsViewInput.swift */; };
 		EABC624B945C3FE0F8AF5CC1 /* TaskListFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813E61B567E1ACB0309501E9 /* TaskListFactory.swift */; };
@@ -85,6 +87,8 @@
 		D41025422F5F4B50009CEA71 /* UITableView+register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+register.swift"; sourceTree = "<group>"; };
 		D41025442F5F4BB1009CEA71 /* UITableViewCell+identifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+identifier.swift"; sourceTree = "<group>"; };
 		D41025462F5F4C1D009CEA71 /* UITableView+dequeue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+dequeue.swift"; sourceTree = "<group>"; };
+		D417E9802F609DAF00459E94 /* TaskService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskService.swift; sourceTree = "<group>"; };
+		D417E9822F609DDA00459E94 /* SaveService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveService.swift; sourceTree = "<group>"; };
 		D73D6481B8EAB739D9F5BAE5 /* TaskListinteractorOutput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TaskListinteractorOutput.swift; sourceTree = "<group>"; };
 		E34165C489148A0976E842EC /* DetailsPresenter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DetailsPresenter.swift; sourceTree = "<group>"; };
 		E9A09565A4C4637D18ACE8E5 /* Pods-ToDoForEM.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToDoForEM.debug.xcconfig"; path = "Target Support Files/Pods-ToDoForEM/Pods-ToDoForEM.debug.xcconfig"; sourceTree = "<group>"; };
@@ -293,6 +297,7 @@
 		D410253E2F5DE797009CEA71 /* BusinessLogic */ = {
 			isa = PBXGroup;
 			children = (
+				D417E97F2F609D4E00459E94 /* Services */,
 				D41025412F5F4B36009CEA71 /* Extention */,
 				D410253D2F5DE75D009CEA71 /* Entity */,
 			);
@@ -307,6 +312,15 @@
 				D41025462F5F4C1D009CEA71 /* UITableView+dequeue.swift */,
 			);
 			path = Extention;
+			sourceTree = "<group>";
+		};
+		D417E97F2F609D4E00459E94 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				D417E9802F609DAF00459E94 /* TaskService.swift */,
+				D417E9822F609DDA00459E94 /* SaveService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		D4E58A772F5C831D00DA3373 /* presentation */ = {
@@ -443,6 +457,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D417E9832F609DDA00459E94 /* SaveService.swift in Sources */,
 				D40F9C452F5C676000726F6C /* ToDoForEM.xcdatamodeld in Sources */,
 				D40F9C3B2F5C676000726F6C /* AppDelegate.swift in Sources */,
 				D40F9C3D2F5C676000726F6C /* SceneDelegate.swift in Sources */,
@@ -453,6 +468,7 @@
 				E881ED509ED2CD84EC1BCE2F /* DetailsViewInput.swift in Sources */,
 				0A55E682C3C5E02FC5F8744F /* DetailsViewOutput.swift in Sources */,
 				9BEC800567592D07BCB47DD3 /* DetailsViewController.swift in Sources */,
+				D417E9812F609DAF00459E94 /* TaskService.swift in Sources */,
 				5E5A090C1D89443AC04B449D /* DetailsModuleInput.swift in Sources */,
 				1E06A2EA9E03999D1E433DB4 /* DetailsPresenter.swift in Sources */,
 				D41025472F5F4C1D009CEA71 /* UITableView+dequeue.swift in Sources */,
