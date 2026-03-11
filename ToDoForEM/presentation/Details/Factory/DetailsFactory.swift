@@ -44,8 +44,15 @@ class DetailsModuleAssembly: Assembly {
             presenter.interactor = interactor
             interactor.output = presenter
             presenter.configure(with: task)
+            interactor.saveService = container.resolve(SaveServiceProtocol.self)
 
             return vc
         }.inObjectScope(.transient)
+        
+        //TODO: 
+        container.register(SaveServiceProtocol.self) { resolver in
+            let taskProvider = resolver.resolve(TaskServiceProtocol.self)!
+            return SaveService(taskProvider: taskProvider)
+        }.inObjectScope(.container)
     }
 }

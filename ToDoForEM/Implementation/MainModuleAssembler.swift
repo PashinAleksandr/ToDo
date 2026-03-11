@@ -47,7 +47,9 @@ extension MainModuleAssembler {
 final class ServiceAssembly: Assembly {
     
     func assemble(container: Container) {
-        
+//        container.register(SaveServiceProtocol.self) { _ in
+//            SaveService(taskProvider: <#TaskServiceProtocol#>)
+//        }
         container.register(TaskServiceProtocol.self) { _ in
             TaskService()
         }

@@ -16,5 +16,4 @@ protocol TaskListViewInput: UIViewInput {
     */
 
     func setupInitialState()
-    func showTasks(_ tasks: [Task])
 }

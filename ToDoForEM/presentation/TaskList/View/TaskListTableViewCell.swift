@@ -26,7 +26,6 @@ class TaskListTableViewCell: UITableViewCell {
     
     private func setupUI() {
         title.font = .systemFont(ofSize: 16, weight: .medium)
-        title.numberOfLines = 1
         
         todoLabel.font = .systemFont(ofSize: 14, weight: .regular)
         //TODO: НЕ переноситься на новую строку. Надо отображать2 а видно только 1(Посмотреть есть ли правая граница)
@@ -57,6 +56,7 @@ class TaskListTableViewCell: UITableViewCell {
         title.snp.makeConstraints{ make in
             make.top.equalToSuperview().offset(16)
             make.leading.equalTo(completed.snp.trailing).offset(12)
+            make.trailing.equalToSuperview().inset(12)
         }
         
         todoLabel.snp.makeConstraints{ make in
@@ -79,9 +79,10 @@ class TaskListTableViewCell: UITableViewCell {
         self.viewModel = viewModel
         disposeBag = DisposeBag()
         
-        viewModel.title.bind(to: title.rx.text).disposed(by: disposeBag)
         viewModel.todoLabel.bind(to: todoLabel.rx.text).disposed(by: disposeBag)
         viewModel.dataLabel.bind(to: dataLabel.rx.text).disposed(by: disposeBag)
+        
+        updateCompletedUI(isCompleted: viewModel.completed.value)
         
         viewModel.completed
             .subscribe(onNext: { [weak self] isCompleted in
@@ -95,13 +96,13 @@ class TaskListTableViewCell: UITableViewCell {
             })
             .disposed(by: disposeBag)
     }
+    
     private func updateCompletedUI(isCompleted: Bool) {
         if isCompleted {
             completed.setTitle("✓", for: .normal)
             completed.backgroundColor = .systemYellow
             title.textColor = .systemGray
             todoLabel.textColor = .systemGray
-            //TODO: Из за переиспользования ячейки багует перечеркивание. Поправить если останется время. Убрать из prepareForReuse кастыль не помог
             let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: title.text ?? "")
             attributeString.addAttribute(.strikethroughStyle,
                                          value: NSUnderlineStyle.single.rawValue,
@@ -129,6 +130,5 @@ class TaskListTableViewCell: UITableViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         disposeBag = DisposeBag()
-        title.text = viewModel?.title.value
     }
 }

@@ -35,10 +35,12 @@ class TaskListModuleAssembly: Assembly {
 
             viewController.output = presenter
 
-            let interactor = TaskListInteractor()
+            let interactor = TaskListInteractor(
+                taskService: resolver.resolve(TaskServiceProtocol.self)!,
+                saveService: resolver.resolve(SaveServiceProtocol.self)!
+            )
+
             interactor.output = presenter
-            
-            interactor.taskService = resolver.resolve(TaskServiceProtocol.self)
 
             presenter.interactor = interactor
             viewController.output = presenter
@@ -47,6 +49,12 @@ class TaskListModuleAssembly: Assembly {
         }.inObjectScope(.transient)
         container.register(TaskServiceProtocol.self) { _ in
             TaskService()
+        }.inObjectScope(.container)
+        
+        container.register(SaveServiceProtocol.self) { resolver in
+            SaveService(
+                taskProvider: resolver.resolve(TaskServiceProtocol.self)!
+            )
         }.inObjectScope(.container)
     }
 }

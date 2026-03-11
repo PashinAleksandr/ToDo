@@ -38,25 +38,25 @@ final class Task: Mappable {
     }
     
     required init?(map: Map) {}
-
-       func mapping(map: Map) {
-
-           let stringToInt = TransformOf<Int, Any>(
-               fromJSON: { value in
-                   if let v = value as? Int { return v }
-                   return nil
-               },
-               toJSON: { $0 }
-           )
-
-           todo      <- map["todo"]
-           completed <- map["completed"]
-           id        <- (map["id"], stringToInt)
-           userID    <- (map["userId"], stringToInt)
-
-           title = todo
-           data = Date().timeIntervalSince1970
-       }
+    
+    func mapping(map: Map) {
+        
+        let stringToInt = TransformOf<Int, Any>(
+            fromJSON: { value in
+                if let v = value as? Int { return v }
+                return nil
+            },
+            toJSON: { $0 }
+        )
+        
+        todo      <- map["todo"]
+        completed <- map["completed"]
+        id        <- (map["id"], stringToInt)
+        userID    <- (map["userId"], stringToInt)
+        
+        title = todo
+        data = Date().timeIntervalSince1970
+    }
     
 }
 

@@ -7,13 +7,31 @@
 //
 
 import Foundation
+import RxSwift
+import RxRelay
 
-class TaskListInteractor: TaskListInteractorInput {
-
-    weak var output: TaskListInteractorOutput!
-    var taskService: TaskServiceProtocol!
+final class TaskListInteractor: TaskListInteractorInput {
     
-    func loadTask() { 
+    weak var output: TaskListInteractorOutput!
+    private let taskService: TaskServiceProtocol
+    private let saveService: SaveServiceProtocol
+    private let disposeBag = DisposeBag()
+    
+    init(taskService: TaskServiceProtocol,
+         saveService: SaveServiceProtocol) {
+        
+        self.taskService = taskService
+        self.saveService = saveService
+    }
+    
+    func subsccribeOnCoins() {
+        saveService.tasks.subscribe { [weak self] value in
+            self?.output.didUpdateTasks(value)
+        }
+    }
+    
+    func loadTask() {
+    
         taskService.fetchTasks { [weak self] tasks, error in
             guard let self = self else { return }
             if let tasks = tasks {
@@ -24,5 +42,6 @@ class TaskListInteractor: TaskListInteractorInput {
                 output.showError(error: error)
             }
         }
+        
     }
 }

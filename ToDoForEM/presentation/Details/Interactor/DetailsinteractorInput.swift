@@ -10,5 +10,6 @@ import Foundation
 
 protocol DetailsInteractorInput: AnyObject {
 
-
+    func add(task: Task)
+    
 }

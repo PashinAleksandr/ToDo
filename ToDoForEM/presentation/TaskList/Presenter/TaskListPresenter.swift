@@ -7,13 +7,16 @@
 //
 
 import Foundation
+import RxSwift
+import RxRelay
 
 class TaskListPresenter: NSObject, TaskListModuleInput, TaskListViewOutput {
 
     weak var view: TaskListViewInput!
     var interactor: TaskListInteractorInput!
     var router: TaskListRouterInput!
-
+    var tasks = BehaviorRelay<[Task]>(value: [])
+    
     func viewIsReady() {
         view.setupInitialState()
     }
@@ -35,7 +38,16 @@ extension TaskListPresenter: TaskListInteractorOutput {
     }
     
     func didUpdateTasks(_ tasks: [Task]) {
-        view.showTasks(tasks)
+        self.tasks.accept(tasks)
     }
     
+}
+
+extension TaskListPresenter {
+    //TODO: в сервис
+    func deleteTask(_ task: Task) {
+        var currentTasks = tasks.value
+        currentTasks.removeAll { $0.id == task.id }
+        tasks.accept(currentTasks)
+    }
 }

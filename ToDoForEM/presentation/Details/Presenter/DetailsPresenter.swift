@@ -26,10 +26,16 @@ class DetailsPresenter: NSObject, DetailsModuleInput, DetailsViewOutput {
         self.task = task
     }
     
+    func saveTask(_ task: Task) {
+        interactor.add(task: task)
+        openTaskListVC()
+    }
+    
     func setupInitialState() {
         
     }
 }
 
 extension DetailsPresenter: DetailsInteractorOutput {
+    
 }

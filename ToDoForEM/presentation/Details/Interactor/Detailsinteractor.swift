@@ -11,5 +11,9 @@ import Foundation
 class DetailsInteractor: DetailsInteractorInput {
 
     weak var output: DetailsInteractorOutput!
-
+    var saveService: SaveServiceProtocol!
+    
+    func add(task: Task) {
+        saveService.add(task)
+    }
 }

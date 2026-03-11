@@ -64,7 +64,8 @@ class DetailsViewController: UIViewController, DetailsViewInput {
         
         backButton.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide).offset(16)
-            make.left.equalToSuperview().offset(16)        }
+            make.left.equalToSuperview().offset(16)
+        }
         
         taskTitleTextField.snp.makeConstraints { make in
             make.top.equalTo(backButton.snp.bottom).offset(16)
@@ -86,10 +87,14 @@ class DetailsViewController: UIViewController, DetailsViewInput {
         
         dataLabel.textColor = .systemGray
         dataLabel.font = .systemFont(ofSize: 12, weight: .thin)
-        
     }
     
-    @objc func openTaskListVC () {
-        output.openTaskListVC()
+    //TODO:
+    @objc func openTaskListVC() {
+        task?.title = taskTitleTextField.text ?? ""
+        task?.todo = todoTextView.text
+        if let task = output.task {
+            output.saveTask(task)
+        }
     }
 }

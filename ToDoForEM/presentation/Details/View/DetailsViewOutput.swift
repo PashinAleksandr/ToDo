@@ -18,4 +18,5 @@ protocol DetailsViewOutput {
     func viewIsReady()
     func openTaskListVC()
     var task: Task? { get set }
+    func saveTask(_ task: Task)
 }

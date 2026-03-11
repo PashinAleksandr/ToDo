@@ -16,7 +16,7 @@ extension TaskListTableViewCell {
         
         var disposeBag = DisposeBag()
         
-        private let task:Task
+        let task: Task
         
         let title = BehaviorRelay<String>(value: "")
         let completed = BehaviorRelay<Bool>(value: false)

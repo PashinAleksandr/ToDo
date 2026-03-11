@@ -12,12 +12,12 @@ import RxRelay
 import ObjectMapper
 
 protocol TaskServiceProtocol {
-    var tasks: BehaviorRelay<[Task]> { get }
+    var tasks: BehaviorRelay<[Task]> { get set }
     func fetchTasks(complitionHandler: @escaping ([Task]?, Error?) -> Void)
 }
 
 final class TaskService: TaskServiceProtocol {
-    var tasks = RxRelay.BehaviorRelay<[Task]>(value: [])
+    var tasks = BehaviorRelay<[Task]>(value: [])
     
     func fetchTasks(complitionHandler: @escaping ([Task]?, Error?) -> Void) {
         

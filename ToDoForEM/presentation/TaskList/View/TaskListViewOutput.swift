@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import RxSwift
+import RxRelay
 
 protocol TaskListViewOutput {
 
@@ -18,5 +20,8 @@ protocol TaskListViewOutput {
     func viewIsReady()
     func didSelectTask(_ task: Task)
     func loadTask()
+    var tasks: BehaviorRelay<[Task]> { get set }
+    func deleteTask(_ task: Task)
+
     
 }

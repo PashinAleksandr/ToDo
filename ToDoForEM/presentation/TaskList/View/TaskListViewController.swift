@@ -14,13 +14,14 @@ import RxRelay
 
 class TaskListViewController: UIViewController, TaskListViewInput {
     
-    private var taskList: [Task] = []
     private var taskViewModel: [TaskListTableViewCell.ViewModel] = []
     var output: TaskListViewOutput!
+    private let disposeBag = DisposeBag()
     
     private let tableView = UITableView()
     private let refreshControl = UIRefreshControl()
     private let activityIndicator = UIActivityIndicatorView(style: .large)
+    //TODO: Кривой бар нужно добавить в таблицу и скрывать при скроле(переделать если успею)
     private let searchBar = UISearchBar()
     private let taskLabel = UILabel()
     private let viewContayner = UIView()
@@ -28,26 +29,19 @@ class TaskListViewController: UIViewController, TaskListViewInput {
     private let creatTaskButton = UIButton()
     private let micImage = UIImage(systemName: "mic.fill")
     private let micImageView = UIImageView()
+    private let clearButton = UIButton(type: .system)
     
-//    var d: Task = Task(title: "ЖратьПокорми котаПокорми кота", todo: "Покорми кота Покорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми кота", completed: false, data: 1234.124, id: 1, userID: 1)
-//    var a: Task = Task(title: "ЖратПокорми котаПокорми котаПокорми котаПокорми котаь", todo: "Покорми кота", completed: false, data: 1234.124, id: 1, userID: 1)
-//    var b: Task = Task(title: "ЖратПокорми котаь", todo: "Покорми кота", completed: false, data: 1234.124, id: 1, userID: 1)
-//    var c: Task = Task(title: "Жрать", todo: "ПокоПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котаПокорми котарми кота", completed: false, data: 1234.124, id: 1, userID: 1)
-//    var e: Task = Task(title: "Жрать", todo: "Покорми кота", completed: false, data: 1234.124, id: 1, userID: 1)
-//    var t: Task = Task(title: "Жрать", todo: "Покорми кота", completed: false, data: 1234.124, id: 1, userID: 1)
-//    
     // MARK: Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-       // taskList = [a,b,c,d,e,t]
-      //  transform(tasks: taskList)
+        
         setupInitialState()
+        bindUI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         output.loadTask()
     }
-    
     
     // MARK: TaskListViewInput
     func setupInitialState() {
@@ -65,21 +59,44 @@ class TaskListViewController: UIViewController, TaskListViewInput {
         }
     }
     
-    func showTasks(_ tasks: [Task]) {
-
-        var map = Dictionary(uniqueKeysWithValues: taskList.map { ($0.id, $0) })
-
-        for task in tasks {
-            map[task.id] = task
-        }
-
-        taskList = Array(map.values)
-
-        transform(tasks: taskList)
-
-        stopActivityIndicator()
-        tableView.reloadData()
-        taskCounterLabel.text = "\(taskViewModel.count) Задач"
+    private func bindUI() {
+        
+        guard let presenter = output as? TaskListPresenter else { return }
+        
+        Observable
+            .combineLatest(
+                presenter.tasks,
+                searchBar.rx.text.orEmpty
+            )
+            .map { tasks, searchText -> [Task] in
+                
+                guard !searchText.isEmpty else {
+                    return tasks
+                }
+                
+                return tasks.filter { task in
+                    
+                    let titleMatch = task.title
+                        .lowercased()
+                        .contains(searchText.lowercased())
+                    
+                    let idMatch = String(task.id)
+                        .contains(searchText)
+                    
+                    return titleMatch || idMatch
+                }
+            }
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] tasks in
+                
+                guard let self else { return }
+                
+                self.transform(tasks: tasks)
+                self.tableView.reloadData()
+                self.taskCounterLabel.text = "\(taskViewModel.count) Задач"
+                
+            })
+            .disposed(by: disposeBag)
     }
     
     func transform(tasks: [Task]) {
@@ -89,10 +106,10 @@ class TaskListViewController: UIViewController, TaskListViewInput {
     }
     
     func deleteTask(taskRow: Int) {
-        taskList.remove(at: taskRow)
-        taskViewModel.remove(at: taskRow)
-        tableView.reloadData()
-        taskCounterLabel.text = "\(taskViewModel.count) Задач"
+        guard taskRow < taskViewModel.count else { return }
+        
+        let taskToDelete = taskViewModel[taskRow].task
+        output.deleteTask(taskToDelete)
     }
     
     func stopActivityIndicator() {
@@ -167,15 +184,20 @@ class TaskListViewController: UIViewController, TaskListViewInput {
         creatTaskButton.configuration?.preferredSymbolConfigurationForImage =
         UIImage.SymbolConfiguration(pointSize: 22, weight: .medium)
         
+        clearButton.setImage(UIImage(systemName: "xmark.circle.fill"), for: .normal)
+        clearButton.tintColor = .systemGray3
+        clearButton.isHidden = true
+        searchBar.searchTextField.rightView = clearButton
+        searchBar.searchTextField.rightViewMode = .always
     }
     
     @objc func creatNewTask() {
         let calendar = Calendar.current
         let today = calendar.startOfDay(for: Date())
         let timestamp = today.timeIntervalSince1970
-
         
-        let newTask: Task = Task(title: "", todo: "", completed: false, data: timestamp, id: taskList.count+1 , userID: 99)
+        
+        let newTask: Task = Task(title: "", todo: "", completed: false, data: timestamp, id: Int.random(in: 100000...999999) , userID: 99)
         output.didSelectTask(newTask)
     }
 }
@@ -195,13 +217,13 @@ extension TaskListViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let task = taskList[indexPath.row]
-        output.didSelectTask(task)
+        let task = taskViewModel[indexPath.row]
+        output.didSelectTask(task.task)
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
     func editTask(index: Int) {
-        output.didSelectTask(taskList[index])
+        output.didSelectTask(taskViewModel[index].task)
     }
 }
 
