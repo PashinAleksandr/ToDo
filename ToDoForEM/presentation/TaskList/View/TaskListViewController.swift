@@ -44,14 +44,17 @@ class TaskListViewController: UIViewController, TaskListViewInput {
         setupInitialState()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        output.loadTask()
+    }
+    
     
     // MARK: TaskListViewInput
     func setupInitialState() {
-        //  output.viewIsReady()
+        output.loadTask()
         setupActivityIndicator()
         activityIndicator.startAnimating()
         setuUI()
-        output.loadTask()
     }
     
     private func setupActivityIndicator() {
@@ -76,6 +79,7 @@ class TaskListViewController: UIViewController, TaskListViewInput {
 
         stopActivityIndicator()
         tableView.reloadData()
+        taskCounterLabel.text = "\(taskViewModel.count) Задач"
     }
     
     func transform(tasks: [Task]) {
@@ -155,7 +159,7 @@ class TaskListViewController: UIViewController, TaskListViewInput {
         
         taskCounterLabel.font = .systemFont(ofSize: 16, weight: .medium)
         taskCounterLabel.textColor = .systemGray6
-        taskCounterLabel.text = "\(taskViewModel.count) Задач"
+        
         creatTaskButton.addTarget(self, action: #selector(creatNewTask), for: .touchUpInside)
         creatTaskButton.setImage(UIImage(systemName: "square.and.pencil"), for: .normal)
         creatTaskButton.tintColor = .systemYellow

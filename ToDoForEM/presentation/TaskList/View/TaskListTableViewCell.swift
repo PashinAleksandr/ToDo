@@ -95,13 +95,13 @@ class TaskListTableViewCell: UITableViewCell {
             })
             .disposed(by: disposeBag)
     }
-    
     private func updateCompletedUI(isCompleted: Bool) {
         if isCompleted {
             completed.setTitle("✓", for: .normal)
             completed.backgroundColor = .systemYellow
             title.textColor = .systemGray
             todoLabel.textColor = .systemGray
+            //TODO: Из за переиспользования ячейки багует перечеркивание. Поправить если останется время. Убрать из prepareForReuse кастыль не помог
             let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: title.text ?? "")
             attributeString.addAttribute(.strikethroughStyle,
                                          value: NSUnderlineStyle.single.rawValue,
@@ -119,10 +119,16 @@ class TaskListTableViewCell: UITableViewCell {
         completed.layer.borderWidth = 2
         completed.layer.borderColor = UIColor.systemYellow.cgColor
         completed.clipsToBounds = true
-        
+
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        disposeBag = DisposeBag()
+        title.text = viewModel?.title.value
     }
 }
