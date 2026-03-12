@@ -7,102 +7,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "0946C044-A46F-4987-8D2A-1FAF76CFD5A7"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ToDoForEM/BusinessLogic/Services/SaveService.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "61"
-            endingLineNumber = "61"
-            landmarkName = "add(_:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "0946C044-A46F-4987-8D2A-1FAF76CFD5A7 - 8075ff515312a31c"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "ToDoForEM.SaveService.isContains(ToDoForEM.Task) -&gt; Swift.Bool"
-                  moduleName = "ToDoForEM"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/aleksandrpashin/Desktop/Swift/ToDoForEM/ToDoForEM/BusinessLogic/Services/SaveService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "62"
-                  endingLineNumber = "62"
-                  offsetFromSymbolStart = "45">
-               </Location>
-               <Location
-                  uuid = "0946C044-A46F-4987-8D2A-1FAF76CFD5A7 - f18cd59c9cf9d0a"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "ToDoForEM.SaveService.add(ToDoForEM.Task) -&gt; ()"
-                  moduleName = "ToDoForEM"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/aleksandrpashin/Desktop/Swift/ToDoForEM/ToDoForEM/BusinessLogic/Services/SaveService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "61"
-                  endingLineNumber = "61"
-                  offsetFromSymbolStart = "165">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "56E04CAC-A026-47EF-9C86-BD9F12ADCA84"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ToDoForEM/BusinessLogic/Services/SaveService.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "62"
-            endingLineNumber = "62"
-            landmarkName = "add(_:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "56E04CAC-A026-47EF-9C86-BD9F12ADCA84 - 8075ff515312a31c"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "ToDoForEM.SaveService.isContains(ToDoForEM.Task) -&gt; Swift.Bool"
-                  moduleName = "ToDoForEM"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/aleksandrpashin/Desktop/Swift/ToDoForEM/ToDoForEM/BusinessLogic/Services/SaveService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "62"
-                  endingLineNumber = "62"
-                  offsetFromSymbolStart = "45">
-               </Location>
-               <Location
-                  uuid = "56E04CAC-A026-47EF-9C86-BD9F12ADCA84 - f18cd59c9cf9d6b"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "ToDoForEM.SaveService.add(ToDoForEM.Task) -&gt; ()"
-                  moduleName = "ToDoForEM"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/aleksandrpashin/Desktop/Swift/ToDoForEM/ToDoForEM/BusinessLogic/Services/SaveService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "62"
-                  endingLineNumber = "62"
-                  offsetFromSymbolStart = "262">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "1E7D7E45-EC77-4570-AE5B-AA842B69BF8C"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -135,84 +39,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "D9DEF3FC-1F3F-4F52-A9B6-FAD1CD9CFD1D"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ToDoForEM/presentation/TaskList/Interactor/TaskListinteractor.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "29"
-            endingLineNumber = "29"
-            landmarkName = "subsccribeOnCoins()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "D9DEF3FC-1F3F-4F52-A9B6-FAD1CD9CFD1D - d9276f88f3ead573"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "ToDoForEM.TaskListInteractor.loadTask() -&gt; ()"
-                  moduleName = "ToDoForEM"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/aleksandrpashin/Desktop/Swift/ToDoForEM/ToDoForEM/presentation/TaskList/Interactor/TaskListinteractor.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "28"
-                  endingLineNumber = "28"
-                  offsetFromSymbolStart = "29">
-               </Location>
-               <Location
-                  uuid = "D9DEF3FC-1F3F-4F52-A9B6-FAD1CD9CFD1D - 7ceb17ee42842003"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Array&lt;ToDoForEM.Task&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in ToDoForEM.TaskListInteractor.loadTask() -&gt; ()"
-                  moduleName = "ToDoForEM"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/aleksandrpashin/Desktop/Swift/ToDoForEM/ToDoForEM/presentation/TaskList/Interactor/TaskListinteractor.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "28"
-                  endingLineNumber = "28"
-                  offsetFromSymbolStart = "159">
-               </Location>
-               <Location
-                  uuid = "D9DEF3FC-1F3F-4F52-A9B6-FAD1CD9CFD1D - 8c7a091d4b9b3eb0"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Array&lt;ToDoForEM.Task&gt;) -&gt; () in ToDoForEM.TaskListInteractor.subsccribeOnCoins() -&gt; ()"
-                  moduleName = "ToDoForEM"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/aleksandrpashin/Desktop/Swift/ToDoForEM/ToDoForEM/presentation/TaskList/Interactor/TaskListinteractor.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "28"
-                  endingLineNumber = "28"
-                  offsetFromSymbolStart = "276">
-               </Location>
-               <Location
-                  uuid = "D9DEF3FC-1F3F-4F52-A9B6-FAD1CD9CFD1D - 8c7a091d4b9b3e93"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Array&lt;ToDoForEM.Task&gt;) -&gt; () in ToDoForEM.TaskListInteractor.subsccribeOnCoins() -&gt; ()"
-                  moduleName = "ToDoForEM"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/aleksandrpashin/Desktop/Swift/ToDoForEM/ToDoForEM/presentation/TaskList/Interactor/TaskListinteractor.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "29"
-                  endingLineNumber = "29"
-                  offsetFromSymbolStart = "77">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "DE485918-5590-444C-AF34-91A0C1A17FD4"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -239,6 +65,38 @@
             startingLineNumber = "49"
             endingLineNumber = "49"
             landmarkName = "deleteTask(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7F057328-04AE-4E9F-855B-062E9AC4B16B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ToDoForEM/presentation/TaskList/Interactor/TaskListinteractor.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
+            landmarkName = "subscribeOnTasks()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4362A70F-B7FD-466D-9D8A-8342F37586E7"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ToDoForEM/presentation/TaskList/Interactor/TaskListinteractor.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
+            landmarkName = "loadTask()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

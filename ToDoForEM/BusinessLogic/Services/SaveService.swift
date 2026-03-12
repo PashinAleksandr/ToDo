@@ -19,28 +19,15 @@ protocol SaveServiceProtocol: AnyObject {
     func remove(_ task: Task)
     func toggle(_ task: Task)
     func isContains(_ task: Task) -> Bool
-    var tasks: BehaviorRelay<[Task]> { get }
 }
 
 
 class SaveService: SaveServiceProtocol {
-    func remove(_ task: Task) {
-        
-    }
-    
-    func toggle(_ task: Task) {
-        
-    }
-    
-    func isContains(_ task: Task) -> Bool {
-        return true
-    }
-    
 
     private let disposeBag = DisposeBag()
     private let taskProvider: TaskServiceProtocol
 
-    var tasks = BehaviorRelay<[Task]>(value: [])
+    private var tasks: [Task] = []
 
     init(taskProvider: TaskServiceProtocol) {
         self.taskProvider = taskProvider
@@ -50,30 +37,36 @@ class SaveService: SaveServiceProtocol {
     private func bindTasks() {
         taskProvider.tasks
             .subscribe(onNext: { [weak self] tasks in
-                self?.tasks.accept(tasks)
+                self?.tasks = tasks
             })
             .disposed(by: disposeBag)
     }
 
     func add(_ task: Task) {
-        var tmp = tasks.value
-        tmp.append(task)
-        tasks.accept(tmp)
-        taskProvider.tasks.accept(tasks.value)
+
+        var currentTasks = taskProvider.tasks.value
+
+        if let index = currentTasks.firstIndex(where: { $0.id == task.id }) {
+            currentTasks[index] = task
+        } else {
+            currentTasks.append(task)
+        }
+
+        taskProvider.tasks.accept(currentTasks)
     }
 
-//    func remove(_ task: Task) {
-//        tasks.value.removeAll { $0.id == task.id }
-//        taskProvider.tasks.accept(tasks)
-//    }
-//
-//    func toggle(_ task: Task) {
-//        guard let index = tasks.firstIndex(where: { $0.id == task.id }) else { return }
-//        tasks[index].completed.toggle()
-//        taskProvider.tasks.accept(tasks)
-//    }
-//
-//    func isContains(_ task: Task) -> Bool {
-//        return tasks.contains { $0.id == task.id }
-//    }
+    func remove(_ task: Task) {
+        tasks.removeAll { $0.id == task.id }
+        taskProvider.tasks.accept(tasks)
+    }
+
+    func toggle(_ task: Task) {
+        guard let index = tasks.firstIndex(where: { $0.id == task.id }) else { return }
+        tasks[index].completed.toggle()
+        taskProvider.tasks.accept(tasks)
+    }
+
+    func isContains(_ task: Task) -> Bool {
+        return tasks.contains { $0.id == task.id }
+    }
 }

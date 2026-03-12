@@ -22,20 +22,25 @@ final class TaskListInteractor: TaskListInteractorInput {
         
         self.taskService = taskService
         self.saveService = saveService
+        
     }
     
-    func subsccribeOnCoins() {
-        saveService.tasks.subscribe { [weak self] value in
-            self?.output.didUpdateTasks(value)
-        }
+    func subscribeOnTasks() {
+        taskService.tasks
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] tasks in
+                self?.output.didUpdateTasks(tasks)
+            })
+            .disposed(by: disposeBag)
     }
     
     func loadTask() {
-    
+        
         taskService.fetchTasks { [weak self] tasks, error in
             guard let self = self else { return }
             if let tasks = tasks {
                 self.output.didUpdateTasks(tasks)
+                subscribeOnTasks()
             }
             
             if let error = error {
