@@ -44,6 +44,8 @@
 		D417E9832F609DDA00459E94 /* SaveService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D417E9822F609DDA00459E94 /* SaveService.swift */; };
 		D417E9852F60A3E000459E94 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = D417E9842F60A3E000459E94 /* Config.swift */; };
 		D417E9872F60B14C00459E94 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D417E9862F60B14C00459E94 /* Errors.swift */; };
+		D49F1F5E2F634A47001937D9 /* Entity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49F1F5C2F634A47001937D9 /* Entity+CoreDataClass.swift */; };
+		D49F1F5F2F634A47001937D9 /* Entity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49F1F5D2F634A47001937D9 /* Entity+CoreDataProperties.swift */; };
 		D9ADDA09CF5CAB806B76CF29 /* TaskListinteractorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E961D5AF9E9B70CF33A7CE8 /* TaskListinteractorInput.swift */; };
 		E881ED509ED2CD84EC1BCE2F /* DetailsViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C5144A13DE356698E96540C /* DetailsViewInput.swift */; };
 		EABC624B945C3FE0F8AF5CC1 /* TaskListFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813E61B567E1ACB0309501E9 /* TaskListFactory.swift */; };
@@ -93,6 +95,8 @@
 		D417E9822F609DDA00459E94 /* SaveService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveService.swift; sourceTree = "<group>"; };
 		D417E9842F60A3E000459E94 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		D417E9862F60B14C00459E94 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
+		D49F1F5C2F634A47001937D9 /* Entity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Entity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		D49F1F5D2F634A47001937D9 /* Entity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Entity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		D73D6481B8EAB739D9F5BAE5 /* TaskListinteractorOutput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TaskListinteractorOutput.swift; sourceTree = "<group>"; };
 		E34165C489148A0976E842EC /* DetailsPresenter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DetailsPresenter.swift; sourceTree = "<group>"; };
 		E9A09565A4C4637D18ACE8E5 /* Pods-ToDoForEM.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToDoForEM.debug.xcconfig"; path = "Target Support Files/Pods-ToDoForEM/Pods-ToDoForEM.debug.xcconfig"; sourceTree = "<group>"; };
@@ -293,6 +297,8 @@
 		D410253D2F5DE75D009CEA71 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
+				D49F1F5C2F634A47001937D9 /* Entity+CoreDataClass.swift */,
+				D49F1F5D2F634A47001937D9 /* Entity+CoreDataProperties.swift */,
 				D410253F2F5DE7C7009CEA71 /* Task.swift */,
 				D417E9862F60B14C00459E94 /* Errors.swift */,
 			);
@@ -465,6 +471,7 @@
 			files = (
 				D417E9832F609DDA00459E94 /* SaveService.swift in Sources */,
 				D40F9C452F5C676000726F6C /* ToDoForEM.xcdatamodeld in Sources */,
+				D49F1F5E2F634A47001937D9 /* Entity+CoreDataClass.swift in Sources */,
 				D40F9C3B2F5C676000726F6C /* AppDelegate.swift in Sources */,
 				D40F9C3D2F5C676000726F6C /* SceneDelegate.swift in Sources */,
 				D410253A2F5DD9F1009CEA71 /* TaskListTableViewCell.swift in Sources */,
@@ -472,6 +479,7 @@
 				B0923B3AB7FAD4AFC5D3CF8E /* DetailsFactory.swift in Sources */,
 				D41025432F5F4B50009CEA71 /* UITableView+register.swift in Sources */,
 				E881ED509ED2CD84EC1BCE2F /* DetailsViewInput.swift in Sources */,
+				D49F1F5F2F634A47001937D9 /* Entity+CoreDataProperties.swift in Sources */,
 				0A55E682C3C5E02FC5F8744F /* DetailsViewOutput.swift in Sources */,
 				9BEC800567592D07BCB47DD3 /* DetailsViewController.swift in Sources */,
 				D417E9812F609DAF00459E94 /* TaskService.swift in Sources */,

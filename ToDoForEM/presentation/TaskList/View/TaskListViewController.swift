@@ -38,7 +38,7 @@ class TaskListViewController: UIViewController, TaskListViewInput {
         setupInitialState()
         bindUI()
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         output.loadTask()
     }
