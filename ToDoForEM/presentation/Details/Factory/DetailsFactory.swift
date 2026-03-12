@@ -48,11 +48,5 @@ class DetailsModuleAssembly: Assembly {
 
             return vc
         }.inObjectScope(.transient)
-        
-        //TODO: 
-        container.register(SaveServiceProtocol.self) { resolver in
-            let taskProvider = resolver.resolve(TaskServiceProtocol.self)!
-            return SaveService(taskProvider: taskProvider)
-        }.inObjectScope(.container)
     }
 }

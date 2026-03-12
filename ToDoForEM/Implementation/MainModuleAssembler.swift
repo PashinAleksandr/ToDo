@@ -47,9 +47,11 @@ extension MainModuleAssembler {
 final class ServiceAssembly: Assembly {
     
     func assemble(container: Container) {
-//        container.register(SaveServiceProtocol.self) { _ in
-//            SaveService(taskProvider: <#TaskServiceProtocol#>)
-//        }
+        container.register(SaveServiceProtocol.self) { resolver in
+            let taskProvider = resolver.resolve(TaskServiceProtocol.self)!
+            return SaveService(taskProvider: taskProvider)
+        }.inObjectScope(.container)
+        
         container.register(TaskServiceProtocol.self) { _ in
             TaskService()
         }

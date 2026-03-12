@@ -60,9 +60,7 @@ class TaskListViewController: UIViewController, TaskListViewInput {
     }
     
     private func bindUI() {
-        
         guard let presenter = output as? TaskListPresenter else { return }
-        
         Observable
             .combineLatest(
                 presenter.tasks,
@@ -73,7 +71,6 @@ class TaskListViewController: UIViewController, TaskListViewInput {
                 guard !searchText.isEmpty else {
                     return tasks
                 }
-                
                 return tasks.filter { task in
                     
                     let titleMatch = task.title
