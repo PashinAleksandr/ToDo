@@ -44,7 +44,7 @@ class DetailsViewController: UIViewController, DetailsViewInput {
         let Dformatter = DateFormatter()
         formatter.dateFormat = "dd/MM/yyyy"
         formatter.locale = Locale(identifier: "en_US_POSIX")
-
+        
         dataLabel.text = formatter.string(from: date)
         taskTitleTextField.text = task.title
         todoTextView.text = task.todo
@@ -89,7 +89,7 @@ class DetailsViewController: UIViewController, DetailsViewInput {
         dataLabel.font = .systemFont(ofSize: 12, weight: .thin)
     }
     
-    //TODO:
+    //TODO: унести в сервис как отдохну 
     @objc func openTaskListVC() {
         task?.title = taskTitleTextField.text ?? ""
         task?.todo = todoTextView.text

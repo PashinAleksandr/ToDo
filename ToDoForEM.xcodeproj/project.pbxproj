@@ -46,6 +46,7 @@
 		D417E9872F60B14C00459E94 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D417E9862F60B14C00459E94 /* Errors.swift */; };
 		D49F1F5E2F634A47001937D9 /* Entity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49F1F5C2F634A47001937D9 /* Entity+CoreDataClass.swift */; };
 		D49F1F5F2F634A47001937D9 /* Entity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49F1F5D2F634A47001937D9 /* Entity+CoreDataProperties.swift */; };
+		D49F1F612F63791D001937D9 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49F1F602F63791D001937D9 /* CoreDataStack.swift */; };
 		D9ADDA09CF5CAB806B76CF29 /* TaskListinteractorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E961D5AF9E9B70CF33A7CE8 /* TaskListinteractorInput.swift */; };
 		E881ED509ED2CD84EC1BCE2F /* DetailsViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C5144A13DE356698E96540C /* DetailsViewInput.swift */; };
 		EABC624B945C3FE0F8AF5CC1 /* TaskListFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813E61B567E1ACB0309501E9 /* TaskListFactory.swift */; };
@@ -97,6 +98,7 @@
 		D417E9862F60B14C00459E94 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		D49F1F5C2F634A47001937D9 /* Entity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Entity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		D49F1F5D2F634A47001937D9 /* Entity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Entity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		D49F1F602F63791D001937D9 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		D73D6481B8EAB739D9F5BAE5 /* TaskListinteractorOutput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TaskListinteractorOutput.swift; sourceTree = "<group>"; };
 		E34165C489148A0976E842EC /* DetailsPresenter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DetailsPresenter.swift; sourceTree = "<group>"; };
 		E9A09565A4C4637D18ACE8E5 /* Pods-ToDoForEM.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToDoForEM.debug.xcconfig"; path = "Target Support Files/Pods-ToDoForEM/Pods-ToDoForEM.debug.xcconfig"; sourceTree = "<group>"; };
@@ -331,6 +333,7 @@
 				D417E9802F609DAF00459E94 /* TaskService.swift */,
 				D417E9842F60A3E000459E94 /* Config.swift */,
 				D417E9822F609DDA00459E94 /* SaveService.swift */,
+				D49F1F602F63791D001937D9 /* CoreDataStack.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -485,6 +488,7 @@
 				D417E9812F609DAF00459E94 /* TaskService.swift in Sources */,
 				5E5A090C1D89443AC04B449D /* DetailsModuleInput.swift in Sources */,
 				1E06A2EA9E03999D1E433DB4 /* DetailsPresenter.swift in Sources */,
+				D49F1F612F63791D001937D9 /* CoreDataStack.swift in Sources */,
 				D41025472F5F4C1D009CEA71 /* UITableView+dequeue.swift in Sources */,
 				D41025382F5C8F13009CEA71 /* MainModuleAssembler.swift in Sources */,
 				04E6A7AECD04D907ED10CA85 /* DetailsRouterInput.swift in Sources */,

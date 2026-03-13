@@ -9,11 +9,11 @@
 import Foundation
 
 protocol TaskListViewInput: UIViewInput {
-
+    
     /**
-        @author APashin
-        Setup initial state of the view
-    */
-
+     @author APashin
+     Setup initial state of the view
+     */
+    
     func setupInitialState()
 }

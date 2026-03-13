@@ -28,13 +28,13 @@ class TaskListTableViewCell: UITableViewCell {
         title.font = .systemFont(ofSize: 16, weight: .medium)
         
         todoLabel.font = .systemFont(ofSize: 14, weight: .regular)
-        //TODO: НЕ переноситься на новую строку. Надо отображать2 а видно только 1(Посмотреть есть ли правая граница)
         title.numberOfLines = 2
         todoLabel.lineBreakMode = .byWordWrapping
         dataLabel.font = .systemFont(ofSize: 10, weight: .regular)
         dataLabel.textColor = .systemGray
         todoLabel.setContentCompressionResistancePriority(.required, for: .vertical)
         todoLabel.lineBreakMode = .byTruncatingTail
+        todoLabel.numberOfLines = 2
         
         completed.layer.cornerRadius = 10
         completed.layer.borderWidth = 2

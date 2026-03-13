@@ -9,7 +9,7 @@
 import Foundation
 
 class DetailsInteractor: DetailsInteractorInput {
-
+    
     weak var output: DetailsInteractorOutput!
     var saveService: SaveServiceProtocol!
     

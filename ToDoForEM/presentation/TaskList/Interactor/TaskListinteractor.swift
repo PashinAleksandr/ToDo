@@ -34,19 +34,33 @@ final class TaskListInteractor: TaskListInteractorInput {
             .disposed(by: disposeBag)
     }
     
+    func delete(task: Task) {
+        saveService.remove(task)
+    }
+    
     func loadTask() {
-        
         taskService.fetchTasks { [weak self] tasks, error in
             guard let self = self else { return }
-            if let tasks = tasks {
-                self.output.didUpdateTasks(tasks)
-                subscribeOnTasks()
-            }
             
+            if let tasks = tasks {
+                var uniqueTasks = saveService.loadTasksFromDB()
+                for newTask in tasks {
+                    let isDuplicate = uniqueTasks.contains { existing in
+                        existing.id == newTask.id &&
+                        existing.title == newTask.title &&
+                        existing.todo == newTask.todo
+                    }
+                    if !isDuplicate {
+                        uniqueTasks.append(newTask)
+                        
+                        self.saveService.add(newTask)
+                    }
+                }
+                self.output.didUpdateTasks(uniqueTasks)
+            }
             if let error = error {
-                output.showError(error: error)
+                self.output.showError(error: error)
             }
         }
-        
     }
 }

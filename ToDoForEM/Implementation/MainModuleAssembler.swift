@@ -6,6 +6,7 @@
 //
 
 import Swinject
+import CoreData
 
 final class MainModuleAssembler {
     
@@ -47,15 +48,27 @@ extension MainModuleAssembler {
 final class ServiceAssembly: Assembly {
     
     func assemble(container: Container) {
-        container.register(SaveServiceProtocol.self) { resolver in
-            let taskProvider = resolver.resolve(TaskServiceProtocol.self)!
-            return SaveService(taskProvider: taskProvider)
+        
+        container.register(NSManagedObjectContext.self) { _ in
+            CoreDataStack.shared.context
         }.inObjectScope(.container)
+        
         
         container.register(TaskServiceProtocol.self) { _ in
             TaskService()
         }
         .inObjectScope(.container)
         
+        
+        container.register(SaveServiceProtocol.self) { resolver in
+            let taskProvider = resolver.resolve(TaskServiceProtocol.self)!
+            let context = resolver.resolve(NSManagedObjectContext.self)!
+            
+            return SaveService(
+                taskProvider: taskProvider,
+                context: context
+            )
+        }
+        .inObjectScope(.container)
     }
 }

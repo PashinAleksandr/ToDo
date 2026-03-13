@@ -11,7 +11,7 @@ import RxSwift
 import RxRelay
 
 class TaskListPresenter: NSObject, TaskListModuleInput, TaskListViewOutput {
-
+    
     weak var view: TaskListViewInput!
     var interactor: TaskListInteractorInput!
     var router: TaskListRouterInput!
@@ -49,5 +49,6 @@ extension TaskListPresenter {
         var currentTasks = tasks.value
         currentTasks.removeAll { $0.id == task.id }
         tasks.accept(currentTasks)
+        interactor.delete(task: task)
     }
 }

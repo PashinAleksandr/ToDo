@@ -20,8 +20,6 @@ final class Task: Mappable {
     var id: Int = 0
     var userID: Int = 0
     
-//    required init?(map: Map) {}
-    
     init(title: String ,
          todo: String ,
          completed: Bool,

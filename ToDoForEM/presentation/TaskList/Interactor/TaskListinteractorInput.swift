@@ -10,5 +10,5 @@ import Foundation
 
 protocol TaskListInteractorInput: AnyObject {
     func loadTask()
-
+    func delete(task: Task) 
 }

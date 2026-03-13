@@ -11,7 +11,7 @@ import UIKit
 
 class TaskListRouter: TaskListRouterInput {
     
-	weak var transitionHandler: TransitionHandlerProtocol?
+    weak var transitionHandler: TransitionHandlerProtocol?
     
     func openDetails(for task: Task) {
         let factory = DetailsFactory(task: task)

@@ -38,12 +38,11 @@ class TaskListViewController: UIViewController, TaskListViewInput {
         setupInitialState()
         bindUI()
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         output.loadTask()
     }
     
-    // MARK: TaskListViewInput
     func setupInitialState() {
         output.loadTask()
         setupActivityIndicator()
@@ -220,7 +219,9 @@ extension TaskListViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func editTask(index: Int) {
-        output.didSelectTask(taskViewModel[index].task)
+        var newtask = taskViewModel[index].task
+        newtask.id = Int.random(in: 100000...999999)
+        output.didSelectTask(newtask)
     }
 }
 

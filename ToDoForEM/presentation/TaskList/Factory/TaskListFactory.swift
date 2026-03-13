@@ -8,9 +8,10 @@
 
 import Foundation
 import Swinject
+import CoreData
 
 class TaskListFactory: PresentationModuleFactory {
-
+    
     func instantiateViewController() -> TaskListViewController {
         let viewController = MainModuleAssembler.resolver.resolve(TaskListViewController.self)!
         return viewController
@@ -28,23 +29,23 @@ class TaskListModuleAssembly: Assembly {
             
             let router = TaskListRouter()
             router.transitionHandler = viewController
-
+            
             let presenter = TaskListPresenter()
             presenter.view = viewController
             presenter.router = router
-
+            
             viewController.output = presenter
-
+            
             let interactor = TaskListInteractor(
                 taskService: resolver.resolve(TaskServiceProtocol.self)!,
                 saveService: resolver.resolve(SaveServiceProtocol.self)!
             )
-
+            
             interactor.output = presenter
-
+            
             presenter.interactor = interactor
             viewController.output = presenter
-
+            
             return viewController
         }.inObjectScope(.transient)
         container.register(TaskServiceProtocol.self) { _ in
@@ -53,8 +54,7 @@ class TaskListModuleAssembly: Assembly {
         
         container.register(SaveServiceProtocol.self) { resolver in
             SaveService(
-                taskProvider: resolver.resolve(TaskServiceProtocol.self)!
-            )
+                taskProvider: resolver.resolve(TaskServiceProtocol.self)!, context:CoreDataStack.shared.context)
         }.inObjectScope(.container)
     }
 }

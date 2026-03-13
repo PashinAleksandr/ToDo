@@ -16,7 +16,7 @@ class DetailsFactory: PresentationModuleFactory {
     init(task: Task) {
         self.task = task
     }
-
+    
     func instantiateViewController() -> DetailsViewController {
         let vc = MainModuleAssembler.resolver.resolve(DetailsViewController.self, argument: task)!
         return vc
@@ -33,19 +33,19 @@ class DetailsModuleAssembly: Assembly {
             let vc = DetailsViewController()
             let router = DetailsRouter()
             router.transitionHandler = vc
-
+            
             let presenter = DetailsPresenter()
             presenter.view = vc
             presenter.router = router
-
+            
             vc.output = presenter
-
+            
             let interactor = DetailsInteractor()
             presenter.interactor = interactor
             interactor.output = presenter
             presenter.configure(with: task)
             interactor.saveService = container.resolve(SaveServiceProtocol.self)
-
+            
             return vc
         }.inObjectScope(.transient)
     }

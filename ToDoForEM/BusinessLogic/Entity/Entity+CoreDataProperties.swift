@@ -11,20 +11,20 @@ import CoreData
 
 
 extension Entity {
-
+    
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Entity> {
         return NSFetchRequest<Entity>(entityName: "Entity")
     }
-
+    
     @NSManaged public var complited: Bool
-    @NSManaged public var date: Date?
+    @NSManaged public var date: Double
     @NSManaged public var id: Int64
     @NSManaged public var title: String?
     @NSManaged public var todo: String?
     @NSManaged public var userid: Int64
-
+    
 }
 
 extension Entity : Identifiable {
-
+    
 }

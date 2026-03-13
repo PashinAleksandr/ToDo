@@ -11,17 +11,17 @@ import RxSwift
 import RxRelay
 
 protocol TaskListViewOutput {
-
+    
     /**
-        @author APashin
-        Notify presenter that view is ready
-    */
-
+     @author APashin
+     Notify presenter that view is ready
+     */
+    
     func viewIsReady()
     func didSelectTask(_ task: Task)
     func loadTask()
     var tasks: BehaviorRelay<[Task]> { get set }
     func deleteTask(_ task: Task)
-
+    
     
 }

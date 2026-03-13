@@ -50,6 +50,38 @@
             endingLineNumber = "51"
             landmarkName = "deleteTask(_:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "DE485918-5590-444C-AF34-91A0C1A17FD4 - 3f77fca389d05abd"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ToDoForEM.TaskListPresenter.deleteTask(ToDoForEM.Task) -&gt; ()"
+                  moduleName = "ToDoForEM"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aleksandrpashin/Desktop/Swift/ToDoForEM/ToDoForEM/presentation/TaskList/Presenter/TaskListPresenter.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "51"
+                  endingLineNumber = "51"
+                  offsetFromSymbolStart = "201">
+               </Location>
+               <Location
+                  uuid = "DE485918-5590-444C-AF34-91A0C1A17FD4 - 3f77fca389d05abd"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ToDoForEM.TaskListPresenter.deleteTask(ToDoForEM.Task) -&gt; ()"
+                  moduleName = "ToDoForEM"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aleksandrpashin/Desktop/Swift/ToDoForEM/ToDoForEM/presentation/TaskList/Presenter/TaskListPresenter.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "51"
+                  endingLineNumber = "51"
+                  offsetFromSymbolStart = "208">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -66,6 +98,38 @@
             endingLineNumber = "49"
             landmarkName = "deleteTask(_:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "BC9EAD76-52A4-4F94-93F5-CA8910DE6965 - 3f77fca389d05afb"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ToDoForEM.TaskListPresenter.deleteTask(ToDoForEM.Task) -&gt; ()"
+                  moduleName = "ToDoForEM"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aleksandrpashin/Desktop/Swift/ToDoForEM/ToDoForEM/presentation/TaskList/Presenter/TaskListPresenter.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "49"
+                  endingLineNumber = "49"
+                  offsetFromSymbolStart = "57">
+               </Location>
+               <Location
+                  uuid = "BC9EAD76-52A4-4F94-93F5-CA8910DE6965 - 3f77fca389d05afb"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ToDoForEM.TaskListPresenter.deleteTask(ToDoForEM.Task) -&gt; ()"
+                  moduleName = "ToDoForEM"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aleksandrpashin/Desktop/Swift/ToDoForEM/ToDoForEM/presentation/TaskList/Presenter/TaskListPresenter.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "49"
+                  endingLineNumber = "49"
+                  offsetFromSymbolStart = "60">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -87,16 +151,48 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "4362A70F-B7FD-466D-9D8A-8342F37586E7"
+            uuid = "D91435FD-DA2B-49B4-800D-4F9D305B9B16"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ToDoForEM/presentation/TaskList/Interactor/TaskListinteractor.swift"
+            filePath = "ToDoForEM/BusinessLogic/Services/CoreDataStack.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "43"
-            endingLineNumber = "43"
-            landmarkName = "loadTask()"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "saveContext()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F741693C-9BF5-4637-ADCB-92092555F6DC"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ToDoForEM/BusinessLogic/Services/SaveService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
+            landmarkName = "add(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "424FA1AD-E525-4F58-A30E-9DD24AB21774"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ToDoForEM/BusinessLogic/Services/SaveService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
+            landmarkName = "add(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

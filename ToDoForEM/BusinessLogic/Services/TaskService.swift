@@ -10,6 +10,7 @@ import Alamofire
 import RxSwift
 import RxRelay
 import ObjectMapper
+import CoreData
 
 protocol TaskServiceProtocol {
     var tasks: BehaviorRelay<[Task]> { get set }
@@ -49,6 +50,4 @@ final class TaskService: TaskServiceProtocol {
             }
         }
     }
-    
-    
 }

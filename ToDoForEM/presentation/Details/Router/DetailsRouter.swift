@@ -9,7 +9,7 @@
 import Foundation
 
 class DetailsRouter: DetailsRouterInput {
-	weak var transitionHandler: TransitionHandlerProtocol?
+    weak var transitionHandler: TransitionHandlerProtocol?
     
     func openTaskListVC() {
         transitionHandler?.closeModule(true)

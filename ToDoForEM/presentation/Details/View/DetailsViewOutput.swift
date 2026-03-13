@@ -9,12 +9,12 @@
 import Foundation
 
 protocol DetailsViewOutput {
-
+    
     /**
-        @author APashin
-        Notify presenter that view is ready
-    */
-
+     @author APashin
+     Notify presenter that view is ready
+     */
+    
     func viewIsReady()
     func openTaskListVC()
     var task: Task? { get set }
