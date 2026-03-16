@@ -56,7 +56,6 @@ class TaskListViewController: UIViewController, TaskListViewInput {
     
     private func bindUI() {
         guard let presenter = output as? TaskListPresenter else { return }
-
         Observable
             .combineLatest(
                 presenter.tasks,
@@ -66,11 +65,8 @@ class TaskListViewController: UIViewController, TaskListViewInput {
             )
             .observe(on: ConcurrentDispatchQueueScheduler(qos: .userInitiated))
             .map { tasks, searchText -> [Task] in
-
                 guard !searchText.isEmpty else { return tasks }
-
                 let search = searchText.lowercased()
-
                 return tasks.filter { task in
                     let titleMatch = task.title.lowercased().contains(search)
                     let idMatch = String(task.id).contains(search)
@@ -79,13 +75,11 @@ class TaskListViewController: UIViewController, TaskListViewInput {
             }
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] tasks in
-
                 guard let self else { return }
-
                 self.transform(tasks: tasks)
                 self.tableView.reloadData()
                 self.taskCounterLabel.text = "\(tasks.count) Задач"
-
+                
             })
             .disposed(by: disposeBag)
     }
