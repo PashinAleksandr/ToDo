@@ -14,6 +14,14 @@ class DetailsInteractor: DetailsInteractorInput {
     var saveService: SaveServiceProtocol!
     
     func add(task: Task) {
-        saveService.add(task)
+        
+        saveService.add(task) { [weak self] result in
+            switch result {
+            case .success:
+                self?.output.taskSaved()
+            case .failure(let error):
+                self?.output.showError(error: error)
+            }
+        }
     }
 }

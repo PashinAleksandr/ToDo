@@ -9,5 +9,6 @@
 import Foundation
 
 protocol DetailsInteractorOutput: AnyObject {
-
+    func showError(error: Error)
+    func taskSaved()
 }

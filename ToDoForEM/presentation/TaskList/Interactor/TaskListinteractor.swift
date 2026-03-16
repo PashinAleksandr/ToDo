@@ -22,7 +22,6 @@ final class TaskListInteractor: TaskListInteractorInput {
         
         self.taskService = taskService
         self.saveService = saveService
-        
     }
     
     func subscribeOnTasks() {
@@ -35,31 +34,40 @@ final class TaskListInteractor: TaskListInteractorInput {
     }
     
     func delete(task: Task) {
-        saveService.remove(task)
+        saveService.remove(task) { [weak self] result in
+            switch result {
+            case .success:
+                break
+            case .failure(let error):
+                self?.output.showError(error: error)
+            }
+        }
     }
     
     func loadTask() {
-        taskService.fetchTasks { [weak self] tasks, error in
-            guard let self = self else { return }
+        saveService.loadTasksFromDB { [weak self] localTasks in
+            self?.subscribeOnTasks()
+            guard let self else { return }
             
-            if let tasks = tasks {
-                var uniqueTasks = saveService.loadTasksFromDB()
-                for newTask in tasks {
-                    let isDuplicate = uniqueTasks.contains { existing in
-                        existing.id == newTask.id &&
-                        existing.title == newTask.title &&
-                        existing.todo == newTask.todo
+            self.taskService.fetchTasks { tasks, error in
+                if let tasks = tasks {
+                    var uniqueTasks = localTasks
+                    for newTask in tasks {
+                        let isDuplicate = uniqueTasks.contains { existing in
+                            existing.id == newTask.id &&
+                            existing.title == newTask.title &&
+                            existing.todo == newTask.todo
+                        }
+                        if !isDuplicate {
+                            uniqueTasks.append(newTask)
+                            self.saveService.add(newTask) { _ in }
+                        }
                     }
-                    if !isDuplicate {
-                        uniqueTasks.append(newTask)
-                        
-                        self.saveService.add(newTask)
-                    }
+                    self.output.didUpdateTasks(uniqueTasks)
                 }
-                self.output.didUpdateTasks(uniqueTasks)
-            }
-            if let error = error {
-                self.output.showError(error: error)
+                if let error {
+                    self.output.showError(error: error)
+                }
             }
         }
     }

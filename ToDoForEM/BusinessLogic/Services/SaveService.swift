@@ -16,16 +16,17 @@ protocol TaskProviderProtocol {
 }
 
 protocol SaveServiceProtocol: AnyObject {
-    func add(_ task: Task)
-    func remove(_ task: Task)
+    func add(_ task: Task, completion: @escaping (Result<Void, Error>) -> Void)
+    func remove(_ task: Task, completion: @escaping (Result<Void, Error>) -> Void)
+    func loadTasksFromDB(completion: @escaping ([Task]) -> Void)
     func toggle(_ task: Task)
     func isContains(_ task: Task) -> Bool
-    func loadTasksFromDB() -> [Task]
 }
 
 
 class SaveService: SaveServiceProtocol {
     
+    private let queue = DispatchQueue(label: "SaveServiceQueue", qos: .background)
     private let context: NSManagedObjectContext
     private let disposeBag = DisposeBag()
     private let taskProvider: TaskServiceProtocol
@@ -39,14 +40,6 @@ class SaveService: SaveServiceProtocol {
         bindTasks()
     }
     
-    func update(entity: Entity, from task: Task) {
-        entity.id = Int64(task.id)
-        entity.title = task.title
-        entity.todo = task.todo
-        entity.date = task.data
-        entity.complited = task.completed
-    }
-    
     private func bindTasks() {
         taskProvider.tasks
             .subscribe(onNext: { [weak self] tasks in
@@ -55,57 +48,79 @@ class SaveService: SaveServiceProtocol {
             .disposed(by: disposeBag)
     }
     
-    func add(_ task: Task) {
-        let context = CoreDataStack.shared.context
-        let request: NSFetchRequest<Entity> = Entity.fetchRequest()
-        request.predicate = NSPredicate(format: "id == %d", task.id)
+    func add(_ task: Task, completion: @escaping (Result<Void, Error>) -> Void) {
         
-        if let entity = try? context.fetch(request).first {
-            update(entity: entity, from: task)
-        } else {
-            let entity = Entity(context: context)
-            update(entity: entity, from: task)
+        queue.async { [weak self] in
+            guard let self else { return }
+            let context = self.context
+            context.performAndWait {
+                do {
+                    let request: NSFetchRequest<Entity> = Entity.fetchRequest()
+                    request.predicate = NSPredicate(format: "id == %d", task.id)
+                    if let entity = try context.fetch(request).first {
+                        self.updated(entity: entity, from: task)
+                    } else {
+                        let entity = Entity(context: context)
+                        self.updated(entity: entity, from: task)
+                    }
+                    try context.save()
+                    DispatchQueue.main.async {
+                        var currentTasks = self.taskProvider.tasks.value
+                        if let index = currentTasks.firstIndex(where: { $0.id == task.id }) {
+                            currentTasks[index] = task
+                        } else {
+                            currentTasks.append(task)
+                        }
+                        self.taskProvider.tasks.accept(currentTasks)
+                        completion(.success(()))
+                    }
+                } catch {
+                    DispatchQueue.main.async {
+                        completion(.failure(error))
+                    }
+                }
+            }
         }
-        CoreDataStack.shared.saveContext()
-        
-        var currentTasks = taskProvider.tasks.value
-        if let index = currentTasks.firstIndex(where: { $0.id == task.id }) {
-            currentTasks[index] = task
-        } else {
-            currentTasks.append(task)
-        }
-        taskProvider.tasks.accept(currentTasks)
     }
     
-    func remove(_ task: Task) {
-        let context = CoreDataStack.shared.context
-        let request: NSFetchRequest<Entity> = Entity.fetchRequest()
-        request.predicate = NSPredicate(format: "id == %d", task.id)
-        
-        if let entity = try? context.fetch(request).first {
-            context.delete(entity)
-            CoreDataStack.shared.saveContext()
+    
+    func remove(_ task: Task, completion: @escaping (Result<Void, Error>) -> Void) {
+        queue.async { [weak self] in
+            guard let self else { return }
+            let context = self.context
+            context.performAndWait {
+                do {
+                    let request: NSFetchRequest<Entity> = Entity.fetchRequest()
+                    request.predicate = NSPredicate(format: "id == %d", task.id)
+                    if let entity = try context.fetch(request).first {
+                        context.delete(entity)
+                    }
+                    try context.save()
+                    DispatchQueue.main.async {
+                        let currentTasks = self.taskProvider.tasks.value.filter { $0.id != task.id }
+                        self.taskProvider.tasks.accept(currentTasks)
+                        completion(.success(()))
+                    }
+                } catch {
+                    DispatchQueue.main.async {
+                        completion(.failure(error))
+                    }
+                }
+            }
         }
-        
-        let currentTasks = taskProvider.tasks.value.filter { $0.id != task.id }
-        taskProvider.tasks.accept(currentTasks)
     }
     
     func toggle(_ task: Task) {
         var currentTasks = taskProvider.tasks.value
         guard let index = currentTasks.firstIndex(where: { $0.id == task.id }) else { return }
-        
         currentTasks[index].completed.toggle()
-        
         let context = CoreDataStack.shared.context
         let request: NSFetchRequest<Entity> = Entity.fetchRequest()
         request.predicate = NSPredicate(format: "id == %d", task.id)
-        
         if let entity = try? context.fetch(request).first {
             entity.complited = currentTasks[index].completed
             CoreDataStack.shared.saveContext()
         }
-        
         taskProvider.tasks.accept(currentTasks)
     }
     
@@ -126,12 +141,15 @@ class SaveService: SaveServiceProtocol {
         return tasks.contains { $0.id == task.id }
     }
     
-    func loadTasksFromDB() -> [Task] {
-        let request: NSFetchRequest<Entity> = Entity.fetchRequest()
-        
-        guard let entities = try? context.fetch(request) else {
-            return []
+    func loadTasksFromDB(completion: @escaping ([Task]) -> Void) {
+        queue.async { [weak self] in
+            guard let self else { return }
+            let request: NSFetchRequest<Entity> = Entity.fetchRequest()
+            let entities = (try? self.context.fetch(request)) ?? []
+            let tasks = entities.map { self.map(entity: $0) }
+            DispatchQueue.main.async {
+                completion(tasks)
+            }
         }
-        return entities.map { map(entity: $0) }
     }
 }

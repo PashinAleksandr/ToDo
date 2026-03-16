@@ -28,7 +28,10 @@ class DetailsPresenter: NSObject, DetailsModuleInput, DetailsViewOutput {
     
     func saveTask(_ task: Task) {
         interactor.add(task: task)
-        openTaskListVC()
+    }
+    
+    func showError(error: Error) {
+        view.show(error)
     }
     
     func setupInitialState() {
@@ -37,5 +40,7 @@ class DetailsPresenter: NSObject, DetailsModuleInput, DetailsViewOutput {
 }
 
 extension DetailsPresenter: DetailsInteractorOutput {
-    
+    func taskSaved() {
+        router.openTaskListVC()
+    }
 }

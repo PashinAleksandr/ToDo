@@ -39,10 +39,6 @@ class TaskListViewController: UIViewController, TaskListViewInput {
         bindUI()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        output.loadTask()
-    }
-    
     func setupInitialState() {
         output.loadTask()
         setupActivityIndicator()
@@ -60,37 +56,36 @@ class TaskListViewController: UIViewController, TaskListViewInput {
     
     private func bindUI() {
         guard let presenter = output as? TaskListPresenter else { return }
+
         Observable
             .combineLatest(
                 presenter.tasks,
                 searchBar.rx.text.orEmpty
+                    .debounce(.milliseconds(300), scheduler: MainScheduler.instance)
+                    .distinctUntilChanged()
             )
+            .observe(on: ConcurrentDispatchQueueScheduler(qos: .userInitiated))
             .map { tasks, searchText -> [Task] in
-                
-                guard !searchText.isEmpty else {
-                    return tasks
-                }
+
+                guard !searchText.isEmpty else { return tasks }
+
+                let search = searchText.lowercased()
+
                 return tasks.filter { task in
-                    
-                    let titleMatch = task.title
-                        .lowercased()
-                        .contains(searchText.lowercased())
-                    
-                    let idMatch = String(task.id)
-                        .contains(searchText)
-                    
+                    let titleMatch = task.title.lowercased().contains(search)
+                    let idMatch = String(task.id).contains(search)
                     return titleMatch || idMatch
                 }
             }
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] tasks in
-                
+
                 guard let self else { return }
-                
+
                 self.transform(tasks: tasks)
                 self.tableView.reloadData()
-                self.taskCounterLabel.text = "\(taskViewModel.count) Задач"
-                
+                self.taskCounterLabel.text = "\(tasks.count) Задач"
+
             })
             .disposed(by: disposeBag)
     }
