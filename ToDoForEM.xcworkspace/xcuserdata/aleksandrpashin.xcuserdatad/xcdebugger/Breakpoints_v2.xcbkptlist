@@ -14,58 +14,10 @@
             filePath = "ToDoForEM/presentation/Details/View/DetailsViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "97"
-            endingLineNumber = "97"
+            startingLineNumber = "96"
+            endingLineNumber = "96"
             landmarkName = "openTaskListVC()"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "DE485918-5590-444C-AF34-91A0C1A17FD4"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ToDoForEM/presentation/TaskList/Presenter/TaskListPresenter.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "51"
-            endingLineNumber = "51"
-            landmarkName = "deleteTask(_:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "DE485918-5590-444C-AF34-91A0C1A17FD4 - 3f77fca389d05abd"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "ToDoForEM.TaskListPresenter.deleteTask(ToDoForEM.Task) -&gt; ()"
-                  moduleName = "ToDoForEM"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/aleksandrpashin/Desktop/Swift/ToDoForEM/ToDoForEM/presentation/TaskList/Presenter/TaskListPresenter.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "51"
-                  endingLineNumber = "51"
-                  offsetFromSymbolStart = "201">
-               </Location>
-               <Location
-                  uuid = "DE485918-5590-444C-AF34-91A0C1A17FD4 - 3f77fca389d05abd"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "ToDoForEM.TaskListPresenter.deleteTask(ToDoForEM.Task) -&gt; ()"
-                  moduleName = "ToDoForEM"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/aleksandrpashin/Desktop/Swift/ToDoForEM/ToDoForEM/presentation/TaskList/Presenter/TaskListPresenter.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "51"
-                  endingLineNumber = "51"
-                  offsetFromSymbolStart = "208">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -78,8 +30,8 @@
             filePath = "ToDoForEM/presentation/TaskList/Presenter/TaskListPresenter.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "49"
-            endingLineNumber = "49"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
             landmarkName = "deleteTask(_:)"
             landmarkType = "7">
             <Locations>

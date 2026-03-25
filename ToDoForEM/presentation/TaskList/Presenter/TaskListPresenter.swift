@@ -44,10 +44,8 @@ extension TaskListPresenter: TaskListInteractorOutput {
 }
 
 extension TaskListPresenter {
-    //TODO: в сервис
     func deleteTask(_ task: Task) {
-        var currentTasks = tasks.value
-        currentTasks.removeAll { $0.id == task.id }
+        let currentTasks = tasks.value
         tasks.accept(currentTasks)
         interactor.delete(task: task)
     }

@@ -23,7 +23,6 @@ protocol SaveServiceProtocol: AnyObject {
     func isContains(_ task: Task) -> Bool
 }
 
-
 class SaveService: SaveServiceProtocol {
     
     private let queue = DispatchQueue(label: "SaveServiceQueue", qos: .background)
@@ -32,7 +31,6 @@ class SaveService: SaveServiceProtocol {
     private let taskProvider: TaskServiceProtocol
     
     private var tasks: [Task] = []
-    
     
     init(taskProvider: TaskServiceProtocol, context: NSManagedObjectContext) {
         self.taskProvider = taskProvider
@@ -111,7 +109,7 @@ class SaveService: SaveServiceProtocol {
     }
     
     func toggle(_ task: Task) {
-        var currentTasks = taskProvider.tasks.value
+        let currentTasks = taskProvider.tasks.value
         guard let index = currentTasks.firstIndex(where: { $0.id == task.id }) else { return }
         currentTasks[index].completed.toggle()
         let context = CoreDataStack.shared.context

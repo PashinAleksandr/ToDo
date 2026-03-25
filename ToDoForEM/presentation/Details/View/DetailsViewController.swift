@@ -89,7 +89,6 @@ class DetailsViewController: UIViewController, DetailsViewInput {
         dataLabel.font = .systemFont(ofSize: 12, weight: .thin)
     }
     
-    //TODO: унести в сервис как отдохну 
     @objc func openTaskListVC() {
         task?.title = taskTitleTextField.text ?? ""
         task?.todo = todoTextView.text
